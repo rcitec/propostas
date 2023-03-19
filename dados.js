@@ -722,7 +722,7 @@ function CopiarTextoProposta() {
 
     document.getElementById("BotaoCopiarProposta").select()
     document.getElementById("BotaoCopiarProposta").value = "* * * Proposta Copiada ! * * *";
-    setTimeout(function(){document.getElementById("BotaoCopiarProposta").value = "Copiar Texto Proposta";},5000);
+    setTimeout(function(){document.getElementById("BotaoCopiarProposta").value = "Copiar Texto Proposta";},10000);
 };
 
 
