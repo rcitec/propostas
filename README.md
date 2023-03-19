@@ -1,2 +1,2 @@
 # propostas
-Calcula valor para transporte.
+Valor para transporte.
