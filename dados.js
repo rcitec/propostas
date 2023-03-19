@@ -2,7 +2,8 @@
 // C:\Users\Roger\AppData\Local\Google\Chrome\User Data\Default\databases\file__0
 
 
-// **************************** Declara Variáveis
+
+// **************************** Declara VariÃ¡veis
 localDB = null;
 transacao = null;
 
@@ -46,7 +47,7 @@ xMensagemAlerta = "";
 
 // **************************** Abre Banco de Dados
 function onInit(){
-	if (!window.openDatabase) { alert("Seu navegador não permite criar banco de dados.");}
+	if (!window.openDatabase) { alert("Seu navegador nÃ£o permite criar banco de dados.");}
 	else { initDB(); };
 };
 
@@ -201,7 +202,7 @@ function CalculaViagem() {
         "```Ajudante.. +R$``` "+xAjudante.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "```Desconto.. -R$``` "+(xDescontoFreteLiquido+xAjuste).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "\n" +
-        "*Total dos Serviços R$ "+xTotalDosServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"*";
+        "*Total dos ServiÃ§os R$ "+xTotalDosServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"*";
 
     document.FormApp.Pedagio.value = parseFloat(document.FormApp.Pedagio.value).toFixed(2);
     document.FormApp.Ajudante.value = parseFloat(document.FormApp.Ajudante.value).toFixed(2);
@@ -259,7 +260,7 @@ function AtualizaTabelaFaixasKm() {
 
 
 
-// **************************** Opção Buscar
+// **************************** OpÃ§Ã£o Buscar
 function BuscaProposta() {
     window.onbeforeunload = function() {return "";};
     document.getElementById("DivFormApp").style.visibility = "hidden";
@@ -291,7 +292,7 @@ function BuscaProposta() {
 
             		tabela +=
             			"<tr height='25px' onclick='RegisroSelecionado("+ row['Id'] +")'>" +
-                            "<td colspan='2' style='font-size: 10pt;'><a href='#' onclick='ExcluiProposta();'><b>X </b></a>"+ xResultado + "</td>" +
+                            "<td colspan='2' style='font-size: 10pt;'><a href='#' onclick='ExcluiProposta();'><b>XÂ </b></a>"+ xResultado + "</td>" +
             			"</tr>" ;
             	};
                     tabela +=
@@ -385,7 +386,7 @@ function FecharBusca() {
 
 
 
-// **************************** Opção Gravar / Alterar
+// **************************** OpÃ§Ã£o Gravar / Alterar
 function GravaProposta() {
     xAgora = new Date();
     var dia = xAgora.getDate();
@@ -426,7 +427,7 @@ function GravaProposta() {
 
         xNovaProposta = 'Nao';
 
-        // Atualiza Combustivel, Média Consumo e Desconto Por FaixaKm
+        // Atualiza Combustivel, MÃ©dia Consumo e Desconto Por FaixaKm
         xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
         localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET ValorCombustivel='+xValorCombustivel+', MediaConsumo='+xMediaConsumo+', DescontoPorFaixaKm='+xDescontoPorFaixaKm+';');});
 
@@ -452,7 +453,7 @@ function GravaProposta() {
 
 
 
-// **************************** Opção Excluir
+// **************************** OpÃ§Ã£o Excluir
 function ExcluiProposta() {
     if (confirm("\n Deseja realmente excluir esta Proposta ?") == true) {
         localDB.transaction(function(tx) {tx.executeSql('DELETE FROM Propostas WHERE Id = '+xId+';');});
@@ -471,7 +472,7 @@ function ExcluiProposta() {
 
 
 
-// **************************** Opção Configurar
+// **************************** OpÃ§Ã£o Configurar
 function ConfigurarApp() {
     window.scrollTo(0, 0);
 
@@ -484,7 +485,7 @@ function ConfigurarApp() {
 
 
 
-// **************************** Opção Gravar Configurar App
+// **************************** OpÃ§Ã£o Gravar Configurar App
 function GravarConfigApp() {
     xValorCombustivel = parseFloat(document.FormConfigurar.ConfigValorCombustivel.value).toFixed(2);
     xMediaConsumo = parseFloat(document.FormConfigurar.ConfigMediaConsumo.value).toFixed(2);
@@ -500,7 +501,7 @@ function GravarConfigApp() {
 
     window.scrollTo(0, 0);
     
-    // Atualiza Combustivel, Média Consumo e Desconto Por FaixaKm
+    // Atualiza Combustivel, MÃ©dia Consumo e Desconto Por FaixaKm
     xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
     localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET ValorCombustivel='+xValorCombustivel+', MediaConsumo='+xMediaConsumo+', DescontoPorFaixaKm='+xDescontoPorFaixaKm+';');});
     
@@ -510,7 +511,7 @@ function GravarConfigApp() {
 
 
 
-// **************************** Opção Voltar Configurar App
+// **************************** OpÃ§Ã£o Voltar Configurar App
 function VoltarConfigApp() {
     window.scrollTo(0, 0);
 
@@ -523,7 +524,7 @@ function VoltarConfigApp() {
 
 
 
-// **************************** Opção Limpar
+// **************************** OpÃ§Ã£o Limpar
 function LimpaProposta() {
     location.reload();
     window.scrollTo(0, 0);
@@ -531,7 +532,7 @@ function LimpaProposta() {
 
 
 
-// **************************** Opção Clonar
+// **************************** OpÃ§Ã£o Clonar
 function ClonaProposta() {
     xNovaProposta = 'Sim';
     GravaProposta();
@@ -565,107 +566,107 @@ function GerarMail() {
     xTotalServicosEmail = 0;
     xTextoEmail = "<table cellspacing='0px' style='width: 100%; align: center; font-family: calibri; font-size: 10pt; color: #8D8D8D;'>"
                 + "<tr style='height: 12px;'><td colspan='3'></tr></td>"
-                + "<tr><td colspan='3'> Prezados, anexo Documentação referente a:</tr></td>"
+                + "<tr><td colspan='3'>Â Prezados, anexo DocumentaÃ§Ã£o referente a:</tr></td>"
                 + "<tr style='height: 12px;'><td colspan='3'></tr></td>";
 
     if (document.FormCriarMail.DataMail1.value !== "") {
         xTextoEmail += "<tr bgcolor='#F5F5F5' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail1.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail1.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor1.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail1.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor1.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor1.value);
     };
     if (document.FormCriarMail.DataMail2.value !== "") {
         xTextoEmail += "<tr bgcolor='#FFFFEA' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail2.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail2.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor2.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail2.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor2.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor2.value);
     };
     if (document.FormCriarMail.DataMail3.value !== "") {
         xTextoEmail += "<tr bgcolor='#F5F5F5' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail3.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail3.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor3.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail3.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor3.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor3.value);
     };
     if (document.FormCriarMail.DataMail4.value !== "") {
         xTextoEmail += "<tr bgcolor='#FFFFEA' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail4.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail4.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor4.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail4.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor4.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor4.value);
     };
     if (document.FormCriarMail.DataMail5.value !== "") {
         xTextoEmail += "<tr bgcolor='#F5F5F5' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail5.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail5.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor5.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail5.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor5.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor5.value);
     };
     if (document.FormCriarMail.DataMail6.value !== "") {
         xTextoEmail += "<tr bgcolor='#FFFFEA' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail6.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail6.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor6.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail6.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor6.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor6.value);
     };
     if (document.FormCriarMail.DataMail7.value !== "") {
         xTextoEmail += "<tr bgcolor='#F5F5F5' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail7.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail7.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor7.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail7.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor7.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor7.value);
     };
     if (document.FormCriarMail.DataMail8.value !== "") {
         xTextoEmail += "<tr bgcolor='#FFFFEA' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail8.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail8.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor8.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail8.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor8.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor8.value);
     };
     if (document.FormCriarMail.DataMail9.value !== "") {
         xTextoEmail += "<tr bgcolor='#F5F5F5' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail9.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail9.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor9.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail9.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor9.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor9.value);
     };
     if (document.FormCriarMail.DataMail10.value !== "") {
         xTextoEmail += "<tr bgcolor='#FFFFEA' style='height: 40px;'>"
                      + "<td style='text-align:center; width: 45px;'>" + document.FormCriarMail.DataMail10.value + "</td>"
-                     + "<td> " + document.FormCriarMail.DescricaoMail10.value + "</td>"
-                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor10.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "  </td></tr>";
+                     + "<td>Â " + document.FormCriarMail.DescricaoMail10.value + "</td>"
+                     + "<td style='text-align: right; width: 115px;'>R$ " + Number(document.FormCriarMail.Valor10.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
         xTotalServicosEmail += Number(document.FormCriarMail.Valor10.value);
     };
 
     xTextoEmail += "<tr style='height: 15px;'><td colspan='3'></td></tr>"
-                 + "<tr><td colspan='2' style='text-align: right;'>Total dos Serviços:</td>"
-                    + "<td style='text-align: right;'><b>R$ "+xTotalServicosEmail.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"  </b></td></tr>";
+                 + "<tr><td colspan='2' style='text-align: right;'>Total dos ServiÃ§os:</td>"
+                    + "<td style='text-align: right;'><b>R$ "+xTotalServicosEmail.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"Â Â </b></td></tr>";
 
     if (Number(document.FormCriarMail.Desconto.value) > 0) {
         xTotalServicosEmail -= document.FormCriarMail.Desconto.value;
         xTextoEmail += "<tr><td colspan='2' style='text-align: right; color: red;'>Desconto:"
-                     + "<td colspan='2' style='text-align: right; color: red;'><b>R$ "+Number(document.FormCriarMail.Desconto.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"  </b></td></tr>"
+                     + "<td colspan='2' style='text-align: right; color: red;'><b>R$ "+Number(document.FormCriarMail.Desconto.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"Â Â </b></td></tr>"
                      + "<tr><td colspan='2'></td><td style='border-top: 1px solid #D3D3D3;'></td></tr>"
-                    + "<tr><td colspan='2' style='padding-top: 12px; text-align: right;'>Total à Receber:"
-                     + "<td colspan='2' style='text-align: right;'><b>R$ "+xTotalServicosEmail.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"  </b></td></tr>";
+                    + "<tr><td colspan='2' style='padding-top: 12px; text-align: right;'>Total Ã  Receber:"
+                     + "<td colspan='2' style='text-align: right;'><b>R$ "+xTotalServicosEmail.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"Â Â </b></td></tr>";
     };
 
     xTextoEmail += "<tr style='height: 10px;'><td colspan='3'></td></tr>"
                 + "<tr><td colspan='3' style='border-top: 1px solid #D3D3D3;'></td></tr>"
-                + "<tr><td colspan='3' style='height: 23px; padding-top: 5px;'> Pagador: <b>" + document.FormCriarMail.Pagador.value + "</b></td></tr>"
-                + "<tr><td colspan='3' style='height: 23px;'> Vencimento: <b>" + document.FormCriarMail.Vencimento.value + "</b></td></tr>"
-                + "<tr><td colspan='3' style='height: 23px; padding-bottom: 8px;'> Código de Barras: <font size=1pt><b>" + document.FormCriarMail.CodigoDeBarras.value + "</b></font></td></tr>"
+                + "<tr><td colspan='3' style='height: 23px; padding-top: 5px;'>Â Pagador: <b>" + document.FormCriarMail.Pagador.value + "</b></td></tr>"
+                + "<tr><td colspan='3' style='height: 23px;'>Â Vencimento: <b>" + document.FormCriarMail.Vencimento.value + "</b></td></tr>"
+                + "<tr><td colspan='3' style='height: 23px; padding-bottom: 8px;'>Â CÃ³digo de Barras: <font size=1pt><b>" + document.FormCriarMail.CodigoDeBarras.value + "</b></font></td></tr>"
                 + "<tr><td colspan='3' style='border-top: 1px solid #D3D3D3;'></td></tr>"
                 + "<tr><td colspan='3' style='height: 15px;'></td></tr>"
-                + "<tr><td colspan='3' style='height: 30px;'> Atenciosamente,</td></tr>"
+                + "<tr><td colspan='3' style='height: 30px;'>Â Atenciosamente,</td></tr>"
                 + "<tr><td colspan='3' style='height: 12px;'></td></tr>"
-                + "<tr><td colspan='3'> <i>Rogério Xavier</i></td></tr>"
-                + "<tr><td colspan='3'> <a href='#' onclick='VoltarMail();'><font size=1pt><i>(15)</font><b>99745-0446</b></i></a></td></tr>"
+                + "<tr><td colspan='3'>Â <i>RogÃ©rio Xavier</i></td></tr>"
+                + "<tr><td colspan='3'>Â <a href='#' onclick='VoltarMail();'><font size=1pt><i>(15)</font><b>99745-0446</b></i></a></td></tr>"
                 + "<tr><td colspan='3' style='border-top: 1px solid #D3D3D3;'></td></tr>"
                 + "<tr style='height: 8px;'><td colspan='3'></tr></td>"
-                + "<tr><td colspan='3'> </tr></td>";
+                + "<tr><td colspan='3'>Â </tr></td>";
             + "</table>";
 
     document.getElementById("TextoEmail").innerHTML = xTextoEmail;
@@ -726,7 +727,7 @@ function CopiarTextoProposta() {
 
 
 
-// **************************** Máscara para Telefones
+// **************************** MÃ¡scara para Telefones
 function MascaraTelefone(Telefone){
     if (Telefone.value==" "){ Telefone.value = "" };
     if (Telefone.value.length == 1){ Telefone.value = "(" + Telefone.value };
@@ -736,7 +737,7 @@ function MascaraTelefone(Telefone){
 
 
 
-// **************************** Máscara para Datas
+// **************************** MÃ¡scara para Datas
 function MascaraData(Data){
     if (Data.value==" "){ Data.value = "" };
     if (Data.value.length == 2){ Data.value += "/" };
