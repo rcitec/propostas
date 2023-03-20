@@ -83,17 +83,17 @@ html, xbody {
 .InputDataMail {
     width: 40px;
     text-align : center;
-    font-size: 12pt;
+    font-size: 11pt;
 }
 
 .InputDescricaoMail {
-    width: 235px;
-    font-size: 12pt;
+    width: 225px;
+    font-size: 11pt;
 }
 
 .InputValorMail {
     width: 70px;
-    font-size: 12pt;
+    font-size: 11pt;
     text-align: right;
 }
 

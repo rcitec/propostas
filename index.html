@@ -3,7 +3,7 @@
 <html lang="pt-br">
 	<head>
 		<!--meta charset="UTF-8" name="viewport" content="width=280 user-scalable=no"-->
-        <meta charset="UTF-8" http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <!--meta name="viewport" content="width=device-width, initial-scale=1.0" /-->
 		<title>RCI-Tec .::Propostas::.</title>
@@ -17,9 +17,9 @@
             <form name="FormApp">
                 <table id="TabelaHomeApp" class="TabelasApp">
                     <tr>
-                        <td class="TituloInput">R$ Litro CombustÃ­vel</td>
-                        <td class="TituloInput">Custo CombustÃ­vel</td>
-                        <td class="TituloInput">Frete LÃ­quido</td>
+                        <td class="TituloInput">R$ Litro Combustível</td>
+                        <td class="TituloInput">Custo Combustível</td>
+                        <td class="TituloInput">Frete Líquido</td>
                     </tr>
                     <tr>
                         <td><input class="InputForm" id="ValorCombustivel" placeholder="0,00" type="number" tabindex="1" font-weight: bold;" onChange="AtualizaCombustivel()"></td>
@@ -28,7 +28,7 @@
                     </tr>
                     <tr class="PulaLinha"></tr>
                     <tr>
-                        <td class="TituloInput">DistÃ¢ncia</td>
+                        <td class="TituloInput">Distância</td>
                         <td class="TituloInput">Custo Total</td>
                         <td class="TituloInput">Frete Total</td>
                     </tr>
@@ -39,7 +39,7 @@
                     </tr>
                     <tr class="PulaLinha"></tr>
                     <tr>
-                        <td class="TituloInput">PedÃ¡gio</td>
+                        <td class="TituloInput">Pedágio</td>
                         <td class="TituloInput">Desc Frete Liq</td>
                         <td class="TituloInput">% Desconto Total</td>
                     </tr>
@@ -62,8 +62,8 @@
                     <tr class="PulaLinha"></tr>
                     <tr>
                         <td class="TituloInput">Outros</td>
-                        <td class="TituloInput">Receita LÃ­quida</td>
-                        <td class="TituloInput">Total dos ServiÃ§os</td>
+                        <td class="TituloInput">Receita Líquida</td>
+                        <td class="TituloInput">Total dos Serviços</td>
                     </tr>
                     <tr>
                         <td><input class="InputForm" id="Outros" placeholder="0,00" type="number" tabindex="5" onChange="CalculaViagem()"></td>
@@ -97,12 +97,12 @@
                     </tr>
                     <tr>
                         <td colspan="2"><input class="InputForm" id="Nome" type="text" tabindex="10" style="width: 95%; text-align: left;"></td>
-                        <td><input class="InputForm" id="Telefone" type="text" style="width: 94%; text-align: left;" tabindex="11" onkeydown="MascaraTelefone(Telefone)"></td>
+                        <td><input class="InputForm" id="Telefone" type="text" style="width: 94%; text-align: left;" placeholder="DD999991234" tabindex="11" onkeydown="MascaraTelefone(Telefone)"></td>
                     </tr>
                     <tr class="PulaLinha"></tr>
                     <tr>
-                        <td class="TituloInput" style="text-align: left;">Proposta</td>
-                        <td colspan="2" align="right"><input value="Copiar Texto Proposta" id="BotaoCopiarProposta" type="button"  style="font-size: 8pt; width: 168px;" onclick="CopiarTextoProposta()">Â Â </td>
+                        <td colspan="2" class="TituloInput" style="text-align: left;">Proposta  <input id="Email" type="checkbox" ><font style="font-size: 9pt;">eMail</font></td>
+                        <td align="right"><input value="Copiar Texto Proposta" id="BotaoCopiarProposta" type="button"  style="font-size: 8pt; width: 128px;" onclick="CopiarTextoProposta()">  </td>
                     </tr>
                     <tr>
                         <td colspan="3"><textarea class="InputProposta" id="Proposta">Proposta...</textarea></td>
@@ -119,23 +119,23 @@
                     <td style="width: 100px; text-align: right;"><input id="Gravar" value="Gravar" class="Botao" type="button" onClick="GravaProposta()"></td>
                 </tr>
                 <tr height="30px">
-                    <td style="text-align: left;"><input id="Limpar" value="Limpar" class="Botao" type="button" onClick="LimpaProposta()"></td>
+                    <td style="text-align: left;"><input id="Limpar" value="Limpar / Novo" class="Botao" type="button" onClick="LimpaProposta()"></td>
                     <td style="text-align: right;"><input id="Alterar" value="Alterar" class="Botao" type="button" onClick="GravaProposta()"></td>
                 </tr>
                 <tr height="30px">
                     <td style="text-align: left;"><input id="Clonar" value="Clonar" class="Botao" type="button" onClick="ClonaProposta()"></td>
                     <td style="text-align: right;"><input id="Excluir" value="Excluir" class="Botao" type="button" onClick="ExcluiProposta()"></td>
                 </tr>
-                <tr><td colspan="2">Â </td></tr>
+                <tr><td colspan="2"> </td></tr>
                 <tr><td colspan="2"><hr></td></tr>
-                <tr><td colspan="2">Â </td></tr>
+                <tr><td colspan="2"> </td></tr>
                 <tr>
-                    <td align="left"><input id="EmailApp" value="Â E-MailÂ " style="font-size: 8pt;" type="button" onclick="EmailApp()"></td>
+                    <td align="left"><input id="EmailApp" value=" E-Mail " style="font-size: 8pt;" type="button" onclick="EmailApp()"></td>
                     <td align="right"><input id="ConfigurarApp" value="Configurar" style="font-size: 8pt;" type="button" onclick="ConfigurarApp()"></td>
                 </tr>
-                <tr><td colspan="2">Â </td></tr>
+                <tr><td colspan="2"> </td></tr>
                 <tr><td colspan="2"><hr></td></tr>
-                <tr><td colspan="2" align="right" style="font-size: 5pt;">RogÃ©rio Xavier 03/2023</td></tr>
+                <tr><td colspan="2" align="right" style="font-size: 5pt;">Rogério Xavier 03/2023</td></tr>
             </table>
             <hr>
         </div>
@@ -147,11 +147,11 @@
                 <table id="TbFiltrar" class="TabelasApp">
                     <tr height="25px"><td></td></tr>
                     <tr>
-                        <td align="right"><input id="ProcurarPor" style="height: 25px; width: 90%; text-align: right;" placeholder="Procurar por ? ">Â Â </td>
+                        <td align="right"><input id="ProcurarPor" style="height: 25px; width: 90%; text-align: right;" placeholder="Procurar por ? ">  </td>
                     </tr>
                     <tr height="15px"><td></td></tr>
                     <tr>
-                        <td style="text-align: right;"><input id="FiltroOk" value="Ok" class="Botao" style="width: 30%;" type="button" onClick="BuscaProposta()">Â Â </td>
+                        <td style="text-align: right;"><input id="FiltroOk" value="Ok" class="Botao" style="width: 30%;" type="button" onClick="BuscaProposta()">  </td>
                     </tr>
                 </table>
             </form>            
@@ -162,11 +162,11 @@
                 <table id="TbConfigurar" class="TabelasApp">
                     <tr><td colspan="2"><hr></td></tr>
                     <tr height="25px">
-                        <td>Valor do Litro de CombustÃ­vel</td>
-                        <td><input class="InputForm" id="ConfigValorCombustivel" placeholder="0,00" type="number"></td>
+                        <td>Valor do Litro de Combustível</td>
+                        <td><input class="InputForm" id="ConfigValorCombustivel" placeholder="0,00" type="number" onchange="GravarConfigApp()"</td>
                     </tr>
                     <tr height="25px">
-                        <td>MÃ©dia de Consumo do VeÃ­culo</td>
+                        <td>Média de Consumo do Veículo</td>
                         <td><input class="InputForm" id="ConfigMediaConsumo" placeholder="0,00" type="number"></td>
                     </tr>
                     <tr height="25px">
@@ -175,7 +175,7 @@
                     </tr>
                     <tr><td colspan="2"><hr></td></tr>
                     <tr><td colspan="2" align="center" bgcolor="#FFDDBB" style="font-size: 13pt;">Faixas KM</td></tr>
-                    <tr><td colspan="2" align="center">De / AtÃ© = Valor</td></tr>
+                    <tr><td colspan="2" align="center">De / Até = Valor</td></tr>
                     <tr><td align="right">0 / 50 = </td><td align="left"><input class="InputForm" id="ValorKm1" placeholder="0,00" type="number" disabled="disabled"></td></tr>
                     <tr><td align="right">51 / 100 = </td><td align="left"><input class="InputForm" id="ValorKm2" placeholder="0,00" type="number" disabled="disabled"></td></tr>
                     <tr><td align="right">101 / 200 = </td><td align="left"><input class="InputForm" id="ValorKm3" placeholder="0,00" type="number" disabled="disabled"></td></tr>
@@ -190,11 +190,10 @@
                     <tr><td align="right">1.001 / ....... = </td><td align="left"><input class="InputForm" id="ValorKm12" placeholder="0,00" type="number" disabled="disabled"></td></tr>
                     <tr><td colspan="2"><hr></td></tr>
                     <tr>
-                        <td style="text-align: left;"><input id="ConfigOk" value="Gravar" class="Botao" style="width: 130px;" type="button" onClick="GravarConfigApp()"></td>
-                        <td style="text-align: right;"><input id="ConfigVoltar" value="Voltar" class="Botao" style="width: 100px;" type="button" onClick="VoltarConfigApp()"></td>
+                        <td colspan="2" style="text-align: center;"><input id="ConfigVoltar" value="Voltar" class="Botao" style="width: 100px;" type="button" onClick="VoltarConfigApp()"></td>
                     </tr>
                     <tr><td colspan="2"><hr></td></tr>
-                    <tr><td colspan="2" height="50px">Â </td></tr>
+                    <tr><td colspan="2" height="50px"> </td></tr>
                     <tr>
                         <td colspan="2" align="right"><input id="ConfigApagaBD" class="InputForm" value="Apagar Banco De Dados" style="width: 130px; font-size: 7pt; text-align: center;" type="button" onClick="ApagaBancoDeDados()"></td>
                     </tr>
@@ -205,70 +204,81 @@
 
         <div id="DivFormMail" class="PopUpApp">
             <form name="FormCriarMail">
-                <table class="TabelasApp" style="font-size: 12pt;">
-                    <tr><td colspan="3"><hr></td></tr>
-                    <tr><td align="center">Data</td><td>DescriÃ§Ã£o</td><td align="right">ValorÂ </td></tr>
+                <table class="TabelasApp" style="font-size: 11pt;">
+                    <tr><td align="center">Data</td><td colspan="2">Descrição</td><td align="center">Valor / Desconto</td></tr>
                     <tr>
-                        <td><input id="DataMail1" class="InputDataMail" placeholder="01/01" onkeydown="MascaraData(DataMail1)"></td>
-                        <td><input id="DescricaoMail1" class="InputDescricaoMail" placeholder="DescriÃ§ao"></td>
-                        <td><input id="Valor1" class="InputValorMail" placeholder="0,00" type="number"></td>
+                        <td rowspan="2"><input id="DataMail1" class="InputDataMail" placeholder="01/01" maxlength="5" onkeydown="MascaraData(DataMail1)"></td>
+                        <td rowspan="2"><input id="DescricaoMail1" class="InputDescricaoMail" placeholder="Descriçao"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor1" class="InputValorMail" placeholder="0,00" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto1" class="InputValorMail" placeholder="0,00" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail2" class="InputDataMail" onkeydown="MascaraData(DataMail2)"></td>
-                        <td><input id="DescricaoMail2" class="InputDescricaoMail"></td>
-                        <td><input id="Valor2" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail2" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail2)"></td>
+                        <td rowspan="2"><input id="DescricaoMail2" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor2" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto2" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail3" class="InputDataMail" onkeydown="MascaraData(DataMail3)"></td>
-                        <td><input id="DescricaoMail3" class="InputDescricaoMail"></td>
-                        <td><input id="Valor3" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail3" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail3)"></td>
+                        <td rowspan="2"><input id="DescricaoMail3" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor3" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto3" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail4" class="InputDataMail" onkeydown="MascaraData(DataMail4)"></td>
-                        <td><input id="DescricaoMail4" class="InputDescricaoMail"></td>
-                        <td><input id="Valor4" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail4" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail4)"></td>
+                        <td rowspan="2"><input id="DescricaoMail4" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor4" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto4" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail5" class="InputDataMail" onkeydown="MascaraData(DataMail5)"></td>
-                        <td><input id="DescricaoMail5" class="InputDescricaoMail"></td>
-                        <td><input id="Valor5" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail5" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail5)"></td>
+                        <td rowspan="2"><input id="DescricaoMail5" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor5" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto5" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail6" class="InputDataMail" onkeydown="MascaraData(DataMail6)"></td>
-                        <td><input id="DescricaoMail6" class="InputDescricaoMail"></td>
-                        <td><input id="Valor6" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail6" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail6)"></td>
+                        <td rowspan="2"><input id="DescricaoMail6" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor6" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto6" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail7" class="InputDataMail" onkeydown="MascaraData(DataMail7)"></td>
-                        <td><input id="DescricaoMail7" class="InputDescricaoMail"></td>
-                        <td><input id="Valor7" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail7" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail7)"></td>
+                        <td rowspan="2"><input id="DescricaoMail7" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor7" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto7" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail8" class="InputDataMail" onkeydown="MascaraData(DataMail8)"></td>
-                        <td><input id="DescricaoMail8" class="InputDescricaoMail"></td>
-                        <td><input id="Valor8" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail8" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail8)"></td>
+                        <td rowspan="2"><input id="DescricaoMail8" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor8" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto8" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail9" class="InputDataMail" onkeydown="MascaraData(DataMail9)"></td>
-                        <td><input id="DescricaoMail9" class="InputDescricaoMail"></td>
-                        <td><input id="Valor9" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail9" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail9)"></td>
+                        <td rowspan="2"><input id="DescricaoMail9" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor9" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto9" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
                     <tr>
-                        <td><input id="DataMail10" class="InputDataMail" onkeydown="MascaraData(DataMail10)"></td>
-                        <td><input id="DescricaoMail10" class="InputDescricaoMail"></td>
-                        <td><input id="Valor10" class="InputValorMail" type="number"></td>
+                        <td rowspan="2"><input id="DataMail10" class="InputDataMail" maxlength="5" onkeydown="MascaraData(DataMail10)"></td>
+                        <td rowspan="2"><input id="DescricaoMail10" class="InputDescricaoMail"></td>
+                        <td align="center" width="1px">+</td><td><input id="Valor10" class="InputValorMail" type="number"></td>
+                    <tr><td align="center" width="1px">-</td><td><input id="Desconto10" class="InputValorMail" type="number" onchange="DescontoEmail()"></td></tr>
                     </tr>
-                    <tr><td colspan="2" align="right">Desconto</td><td><input id="Desconto" class="InputValorMail" type="number" placeholder="0,00"></td></tr>
+                    <tr><td colspan="3" align="right">Desconto</td><td><input id="Desconto" class="InputValorMail" type="number" placeholder="0,00" disabled></td></tr>
+
                 </table>
                 <table class="TabelasApp" style="font-size: 12pt;">
                     <tr><td><hr></td></tr>
-                    <tr><td>  Pagador:Â <input id="Pagador" style="width: 295px; font-size: 12pt;" placeholder="Pagador"></td></tr>
-                    <tr><td>Vencimento:Â <input id="Vencimento" style="width: 100px; font-size: 12pt;" placeholder="dd/mm/aaaa" onkeydown="MascaraData(Vencimento)"></td></tr>
-                    <tr><td>CÃ³digo de Barras:Â <input id="CodigoDeBarras" style="width: 230px; font-size: 12pt;" placeholder="CodigoDeBarras"></td></tr>
+                    <tr><td>  Pagador: <input id="Pagador" style="width: 295px; font-size: 12pt;" placeholder="Pagador"></td></tr>
+                    <tr><td>Vencimento: <input id="Vencimento" style="width: 100px; font-size: 12pt;" placeholder="dd/mm/aaaa" onkeydown="MascaraData(Vencimento)"></td></tr>
+                    <tr><td>Código de Barras: <input id="CodigoDeBarras" style="width: 230px; font-size: 12pt;" placeholder="CodigoDeBarras"></td></tr>
                     <tr><td><hr></td></tr>
                     <tr>
                         <td align="center">
-                            <input class="InputForm" id="FecharMailApp" value="Voltar" style="width: 70px; text-align: center" type="button" onClick="FecharMail()">Â Â Â 
+                            <input class="InputForm" id="FecharMailApp" value="Voltar" style="width: 70px; text-align: center" type="button" onClick="FecharMail()">   
+                            <input class="InputForm" id="LimpaMailApp" value="Limpa" style="width: 60px; text-align: center" type="button" onClick="LimpaMail()">   
                             <input class="InputForm" id="GerarMailApp" value="Criar Texto do E-Mail" style="width: 180px; text-align: center" type="button" onClick="GerarMail()">
                         </td>
                     </tr>
@@ -281,7 +291,7 @@
                 <p id="TextoEmail" align="center" class="TextoEmail"></p>
                 <center id="BotoesMail">
                     <br>
-                    <input class="InputForm" id="VoltarMailApp" value="Voltar" style="width: 70px; text-align: center" type="button" onClick="VoltarMail()">Â Â Â Â Â 
+                    <input class="InputForm" id="VoltarMailApp" value="Voltar" style="width: 70px; text-align: center" type="button" onClick="VoltarMail()">     
                     <input class="InputForm" id="CopiarMailApp" value="Copiar Texto" style="width: 135px; text-align: center" type="button" onClick="CopiarMail()">
                 </center>
             </form>
