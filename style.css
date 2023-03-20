@@ -108,20 +108,12 @@ html, xbody {
 }
 
 .TextoEmail {
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     font-family: calibri;
     font-size: 10pt;
     color: #8D8D8D;
     background-color: white;
-}
-
-a:link, a:visited, a:hover, a:active {
-    text-decoration: none;
-    color: #8D8D8D;
-}
-
-.PulaLinha {
-	height: 4px;
 }
 
 .Alerta{
@@ -148,3 +140,12 @@ a:link, a:visited, a:hover, a:active {
     height: 860px;
 	background-color: RGB(255, 255, 255, .8);
 }
+
+.PulaLinha {
+	height: 4px;
+}
+
+/*a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #8D8D8D;
+}*/
