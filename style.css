@@ -72,12 +72,17 @@ html, xbody {
 
 .PopUpApp {
     position: absolute;
-    margin-left: -10px;
+    margin-left: auto;
     margin-right: auto;
     border-style: none;
     border-width: thin;
-    width: 384px;
-    top: 0;
+    width: 360px;
+    top: 15px;
+    padding: 0px 0px 0px 5px; /* Top Rig Bot Lef*/
+    background: RGB(225, 225, 225);
+    -webkit-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
+    -moz-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
+    box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
 }
 
 .InputDataMail {
@@ -87,7 +92,7 @@ html, xbody {
 }
 
 .InputDescricaoMail {
-    width: 225px;
+    width: 200px;
     font-size: 11pt;
 }
 
@@ -124,7 +129,7 @@ html, xbody {
    border: 1px solid #999;
    text-align: center;
    transform: translate(-50%,-50%);
-   top: 100px;
+   top: 200px;
    left: 50%;
    z-index: 100;
    -webkit-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
@@ -134,9 +139,10 @@ html, xbody {
 
 .FundoTransparente {
 	position: absolute;
-	margin-left: auto;
+	margin-left: -12px;
     margin-right: auto;
-    width: 383px;
+    top: -12px;
+    width: 379px;
     height: 860px;
 	background-color: RGB(255, 255, 255, .8);
 }
