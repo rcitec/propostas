@@ -98,13 +98,13 @@ html, xbody {
 }
 
 .PopUpTextoMail {
-    position: absolute;
-    width: 600px;
+    width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    align: center;
     left: 0;
     right: 0;
     top: 0;
-    margin-left: auto; 
-    margin-right: auto;
 }
 
 .TextoEmail {
@@ -126,7 +126,7 @@ html, xbody {
    transform: translate(-50%,-50%);
    top: 100px;
    left: 50%;
-   z-index: 99999;
+   z-index: 100;
    -webkit-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
    -moz-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
    box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);

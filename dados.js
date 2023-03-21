@@ -1,7 +1,8 @@
 // Base de Dados
 // C:\Users\Roger\AppData\Local\Google\Chrome\User Data\Default\databases\file__0
 
-// **************************** Declara VariÃ¡veis
+
+// **************************** Declara Variáveis
 localDB = null;
 transacao = null;
 
@@ -46,7 +47,7 @@ xMensagemAlerta = "";
 
 // **************************** Abre Banco de Dados
 function onInit(){
-	if (!window.openDatabase) { alert("Seu navegador nÃ£o permite criar banco de dados.");}
+	if (!window.openDatabase) { alert("Seu navegador não permite criar banco de dados.");}
 	else { initDB(); };
 };
 
@@ -114,7 +115,7 @@ function initApp() {
     document.getElementById("Gravar").disabled = true;
     document.getElementById("Alterar").disabled = true;
     document.getElementById("Excluir").disabled = true;
-    
+
     //setTimeout(function(){document.getElementById("ValorCombustivel").select();},100);
 };
 
@@ -200,7 +201,7 @@ function CalculaViagem() {
         "```Ajudante.. +R$``` "+xAjudante.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "```Desconto.. -R$``` "+(xDescontoFreteLiquido+xAjuste).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "\n" +
-        "*Total dos ServiÃ§os R$ "+xTotalDosServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"*";
+        "*Total dos Serviços R$ "+xTotalDosServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"*";
 
     document.FormApp.Pedagio.value = parseFloat(document.FormApp.Pedagio.value).toFixed(2);
     document.FormApp.Ajudante.value = parseFloat(document.FormApp.Ajudante.value).toFixed(2);
@@ -258,7 +259,7 @@ function AtualizaTabelaFaixasKm() {
 
 
 
-// **************************** OpÃ§Ã£o Buscar
+// **************************** Opção Buscar
 function BuscaProposta() {
     window.onbeforeunload = function() {return "";};
     document.getElementById("DivFormApp").style.visibility = "hidden";
@@ -295,7 +296,7 @@ function BuscaProposta() {
             			"<tr height='25px' style='color: "+xCorFonte+";' onclick='RegisroSelecionado("+ row['Id'] +")'>" +
                             "<td colspan='2' style='font-size: 10pt;'>"+
                                 "<a href='#' style='text-decoration: none; color: red;'" +
-                                "onclick='ExcluiProposta();'><b>XÂ </b></a>"+ xResultado + 
+                                "onclick='ExcluiProposta();'><b>X </b></a>"+ xResultado + 
                             "</td>" +
             			"</tr>" ;
             	};
@@ -303,8 +304,8 @@ function BuscaProposta() {
                     "<tr height='30px'><td colspan='2'><hr></td></tr>" +
                     "<tr>" +                        
                         "<td align='center'>" +
-                            "<input type='button' value='  Voltar  ' onclick='FecharBusca()'/>Â Â Â Â Â Â Â Â " +
-                            "<input type='button' value='Â Limpar MarcaÃ§Ãµes eMailÂ ' onclick='LimpaStatusEmail()'/>Â Â Â Â Â Â Â Â " +
+                            "<input type='button' value='  Voltar  ' onclick='FecharBusca()'/>        " +
+                            "<input type='button' value=' Limpar Marcações eMail ' onclick='LimpaStatusEmail()'/>        " +
                             "<input type='button' value='  Filtrar  ' onclick='FiltrarBusca()'/>" +
                         "</td>" +
                     "</tr>" +
@@ -367,6 +368,13 @@ function RegisroSelecionado(clicked_id) {
 
 
 
+// **************************** Formata Número para 2 digitos decimais
+function FormataNumero(xNumero) {
+    xNumero.value = parseFloat(xNumero.value).toFixed(2);
+};
+
+
+
 // **************************** Filtrar Busca
 function FiltrarBusca() {
     document.getElementById("DivFormPopUpApp").style.visibility = "hidden";
@@ -390,7 +398,7 @@ function FecharBusca() {
 
 
 
-// **************************** OpÃ§Ã£o Gravar / Alterar
+// **************************** Opção Gravar / Alterar
 function GravaProposta() {
     xAgora = new Date();
     var dia = xAgora.getDate();
@@ -434,7 +442,7 @@ function GravaProposta() {
 
         xNovaProposta = 'Nao';
 
-        // Atualiza Combustivel, MÃ©dia Consumo e Desconto Por FaixaKm
+        // Atualiza Combustivel, Média Consumo e Desconto Por FaixaKm
         xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
         localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET ValorCombustivel='+xValorCombustivel+', MediaConsumo='+xMediaConsumo+', DescontoPorFaixaKm='+xDescontoPorFaixaKm+';');});
 
@@ -461,7 +469,7 @@ function GravaProposta() {
 
 
 
-// **************************** OpÃ§Ã£o Excluir
+// **************************** Opção Excluir
 function ExcluiProposta() {
     if (confirm("\n Deseja realmente excluir esta Proposta ?") == true) {
         localDB.transaction(function(tx) {tx.executeSql('DELETE FROM Propostas WHERE Id = '+xId+';');});
@@ -480,7 +488,7 @@ function ExcluiProposta() {
 
 
 
-// **************************** OpÃ§Ã£o Configurar
+// **************************** Opção Configurar
 function ConfigurarApp() {
     window.scrollTo(0, 0);
 
@@ -493,7 +501,7 @@ function ConfigurarApp() {
 
 
 
-// **************************** OpÃ§Ã£o Gravar Configurar App
+// **************************** Opção Gravar Configurar App
 function GravarConfigApp() {
     xValorCombustivel = parseFloat(document.FormConfigurar.ConfigValorCombustivel.value).toFixed(2);
     xMediaConsumo = parseFloat(document.FormConfigurar.ConfigMediaConsumo.value).toFixed(2);
@@ -506,7 +514,7 @@ function GravarConfigApp() {
 
     window.scrollTo(0, 0);
     
-    // Atualiza Combustivel, MÃ©dia Consumo e Desconto Por FaixaKm
+    // Atualiza Combustivel, Média Consumo e Desconto Por FaixaKm
     xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
     localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET ValorCombustivel='+xValorCombustivel+', MediaConsumo='+xMediaConsumo+', DescontoPorFaixaKm='+xDescontoPorFaixaKm+';');});
     
@@ -516,7 +524,7 @@ function GravarConfigApp() {
 
 
 
-// **************************** OpÃ§Ã£o Voltar Configurar App
+// **************************** Opção Voltar Configurar App
 function VoltarConfigApp() {
     window.scrollTo(0, 0);
 
@@ -529,7 +537,7 @@ function VoltarConfigApp() {
 
 
 
-// **************************** OpÃ§Ã£o Limpar
+// **************************** Opção Limpar
 function LimpaProposta() {
     location.reload();
     window.scrollTo(0, 0);
@@ -537,7 +545,7 @@ function LimpaProposta() {
 
 
 
-// **************************** OpÃ§Ã£o Clonar
+// **************************** Opção Clonar
 function ClonaProposta() {
     xNovaProposta = 'Sim';
     GravaProposta();
@@ -583,7 +591,7 @@ function EmailApp() {
                 eval("document.FormCriarMail.DescricaoMail"+x).value = row['Origem'] + " | " + row['Destino'];
                 eval("document.FormCriarMail.Valor"+x).value = (row['TotalDosServicos'] + row['DescontoFreteLiquido'] + row['Ajuste']).toFixed(2);
                 eval("document.FormCriarMail.Desconto"+x).value = (row['DescontoFreteLiquido']+row['Ajuste']).toFixed(2);
-                eval("document.FormCriarMail.Nome"+x).value = "<br><i style='font-size: 8pt;'>Â Aurorizado: "+row['Nome']+"<i/>";
+                eval("document.FormCriarMail.Nome"+x).value = "<br><i style='font-size: 8pt;'> Autorizado: "+row['Nome']+"<i/>";
                 xDescontoEmail += row['DescontoFreteLiquido']+row['Ajuste'];
                 document.FormCriarMail.Desconto.value = xDescontoEmail.toFixed(2);
             };
@@ -595,21 +603,21 @@ function EmailApp() {
 
 
 // **************************** Calcula Desconto eMail
-function DescontoEmail(){
-    xDescontoEmail = +
-        Number(document.FormCriarMail.Desconto1.value) +
-        Number(document.FormCriarMail.Desconto2.value) +
-        Number(document.FormCriarMail.Desconto3.value) +
-        Number(document.FormCriarMail.Desconto4.value) +
-        Number(document.FormCriarMail.Desconto5.value) +
-        Number(document.FormCriarMail.Desconto6.value) +
-        Number(document.FormCriarMail.Desconto7.value) +
-        Number(document.FormCriarMail.Desconto8.value) +
-        Number(document.FormCriarMail.Desconto9.value) +
-        Number(document.FormCriarMail.Desconto10.value);
-
-
+function DescontoEmail(xNumero){
+    xDescontoEmail = 0;
+    if (document.FormCriarMail.DataMail1.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto1.value)};
+    if (document.FormCriarMail.DataMail2.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto2.value)};
+    if (document.FormCriarMail.DataMail3.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto3.value)};
+    if (document.FormCriarMail.DataMail4.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto4.value)};
+    if (document.FormCriarMail.DataMail5.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto5.value)};
+    if (document.FormCriarMail.DataMail6.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto6.value)};
+    if (document.FormCriarMail.DataMail7.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto7.value)};
+    if (document.FormCriarMail.DataMail8.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto8.value)};
+    if (document.FormCriarMail.DataMail9.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto9.value)};
+    if (document.FormCriarMail.DataMail10.value !== ""){xDescontoEmail += Number(document.FormCriarMail.Desconto10.value)};
     document.FormCriarMail.Desconto.value = xDescontoEmail.toFixed(2);
+
+    xNumero.value = parseFloat(xNumero.value).toFixed(2);
 };
 
 
@@ -623,64 +631,86 @@ function GerarMail() {
 	document.getElementById("DivFormGerarMail").style.visibility = "visible";
 	document.getElementById("BotoesMail").style.visibility = "visible";
 
-    xTotalServicosEmail = 0;
-    xTextoEmail = "<table cellspacing='0px' style='width: 100%; align: center; font-family: calibri; font-size: 10pt; color: #8D8D8D;'>"
-                + "<tr style='height: 12px;'><td colspan='3'></tr></td>"
-                + "<tr><td colspan='3'>Prezados, anexo DocumentaÃ§Ã£o referente a:</tr></td>"
-                + "<tr style='height: 12px;'><td colspan='3'></tr></td>";
-    var xLinha=1
+    xPixel = 0;
+    var xLinha = 1;
+    var xSomaTotalServicos = 0;
+    var xSomaDesconto = 0;
+    var xSomaValorReceber = 0;
+
+    xTextoEmail = "<table cellspacing='0px' style='margin-left:auto; margin-right:auto; align:center; font-family:calibri; font-size:10pt; color:#8D8D8D;'>"
+                + "<tr style='height:12px;'><td colspan='4'></td></tr>"
+                + "<tr><td colspan='4'> Prezados, anexo Documentação referente a:</td></tr>"
+                + "<tr style='height:12px;'><td colspan='4'></td></tr>";
     for (var i = 1; i < 11; i++) {
-        if (eval("document.FormCriarMail.DataMail"+i+".value") !== "") {
+        var xData = eval("document.FormCriarMail.DataMail"+i).value;
+        
+        if (xData !== "") {
+            var xDescricao = eval("document.FormCriarMail.DescricaoMail"+i).value;
+            var xTotalServicos = Number(eval("document.FormCriarMail.Valor"+i).value);
+            var xDesconto = Number(eval("document.FormCriarMail.Desconto"+i).value);
+            xValorReceber = xTotalServicos - xDesconto;
+            xSomaTotalServicos += xTotalServicos;
+            xSomaDesconto += xDesconto;
+            xSomaValorReceber += xValorReceber;
+
             if (xLinha == 1){var xCorLinha = "#F5F5F5"; var xLinha=2} else{var xCorLinha = "#FFFFEA"; var xLinha=1};
-                if(eval("document.FormCriarMail.Desconto"+i).value > 0){
-                    xTextoEmail += "<tr bgcolor="+xCorLinha+" style='height: 25px;'>"
-                                + "<td rowspan='3' style='text-align:center; width: 45px;'>"+eval("document.FormCriarMail.DataMail"+i+".value")+"</td>"
-                                + "<td rowspan='3'>Â "+eval("document.FormCriarMail.DescricaoMail"+i+".value")+eval("document.FormCriarMail.Nome"+i+".value")+"<i/></td>"
-                                + "<td style='text-align: right;  vertical-align: bottom; width: 115px;'>+R$ "+eval("Number(document.FormCriarMail.Valor"+i+".value)").toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>"
-                                + "<tr bgcolor="+xCorLinha+" style='height: 25px;'  >"
-                                + "<td style='text-align: right; vertical-align: middle; width: 115px; color: #FF3C3C;'>-R$ "+eval("Number(document.FormCriarMail.Desconto"+i+".value)").toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>"
-                                + "<tr bgcolor="+xCorLinha+" style='height: 25px;'  >"
-                                + "<td style='text-align: right; vertical-align: top; width: 115px; color: #7D7DFF;'>=R$ "+(eval("document.FormCriarMail.Valor"+i).value - eval("document.FormCriarMail.Desconto"+i).value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
+                if(xDesconto > 0){
+                    xTextoEmail += "<tr bgcolor="+xCorLinha+" style='height:25px;'>"
+                                    + "<td rowspan='3' style='width:10%; text-align:center; min-width:50px; max-width:50px;'>"+String(xData)+"</td>"
+                                    + "<td rowspan='3' style='width:62%;'>"+xDescricao+eval("document.FormCriarMail.Nome"+i).value+"</td>"
+                                    + "<td style='width:25%; text-align:right; vertical-align:bottom; min-width:80px; max-width:150px;'>R$ "+xTotalServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "</td>"
+                                    + "<td style='width:3%; text-align:left; vertical-align:bottom; min-width:05px; max-width:10px;'>+</td></tr>"
+                                    + "<tr bgcolor="+xCorLinha+" style='height:25px;'>"
+                                    + "<td style='width:25%; text-align:right; vertical-align:center; min-width:80px; max-width:150px; color:#FF3C3C;'>R$ "+xDesconto.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "</td>"
+                                    + "<td style='width:3%; text-align:left; vertical-align:center; min-width:10px; max-width:10px;'>-</td></tr>"
+                                    + "<tr bgcolor="+xCorLinha+" style='height:25px;'>"
+                                    + "<td style='width:25%; text-align:right; vertical-align:top; min-width:80px; max-width:150px; color:#7D7DFF;'>R$ "+xValorReceber.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "</td>"
+                                    + "<td style='width:3%; text-align:left; vertical-align:top; min-width:10px; max-width:10px;'>=</td></tr>";
                 } else{
-                    xTextoEmail += "<tr bgcolor="+xCorLinha+" style='height: 50px;'>"
-                                + "<td style='text-align:center; width: 45px;'>"+eval("document.FormCriarMail.DataMail"+i+".value")+"</td>"
-                                + "<td>Â "+eval("document.FormCriarMail.DescricaoMail"+i+".value")+eval("document.FormCriarMail.Nome"+i+".value")+"<i/></td>"
-                                + "<td style='text-align: right; width: 115px;'>+R$ "+eval("Number(document.FormCriarMail.Valor"+i+".value)").toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "Â Â </td></tr>";
+                    xTextoEmail += "<tr bgcolor="+xCorLinha+" style='height:50px;'>"
+                                    + "<td style='width:10%; text-align:center; min-width:50px; max-width:50px;'>"+String(xData)+"</td>"
+                                    + "<td style='width:62%;'>"+xDescricao+eval("document.FormCriarMail.Nome"+i).value+"</td>"
+                                    + "<td style='width:25%; text-align: right; min-width:80px; max-width:150px;'>R$ "+xValorReceber.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2}) + "</td>"
+                                    + "<td style='width:3%; text-align:left; min-width:10px; max-width:10px;'>+</td></tr>";
                 };
-            xTotalServicosEmail += eval("Number(document.FormCriarMail.Valor"+i+".value)");
+
+            var xTotChar = (xData + xDescricao + String(xValorReceber)).length;
+            if (xPixel < xTotChar){xPixel = xTotChar};
         };
     };
-//+ "<tr><td style='text-align:right; width: 45px; font-size: 8pt;'><i>Autorizado: RogÃ©rio Xavier<i/></td></tr>"
-    xTextoEmail += "<tr style='height: 15px;'><td colspan='3'></td></tr>"
-                 + "<tr><td colspan='2' style='text-align: right;'>Total dos ServiÃ§os:</td>"
-                    + "<td style='text-align: right; font-size: 11pt;'><b>R$ "+xTotalServicosEmail.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"Â Â </b></td></tr>";
+    xPixel *= 15;
+    if (xPixel>1000){xPixel=1000};
+    if (xPixel<400){xPixel=400};
 
-    if (document.FormCriarMail.Desconto.value > 0) {
-        xTotalServicosEmail -= Number(document.FormCriarMail.Desconto.value);
-        xTextoEmail += "<tr><td colspan='2' style='text-align: right;'>Descontos:"
-                     + "<td colspan='2' style='text-align: right;'>-<b>R$ "+Number(document.FormCriarMail.Desconto.value).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"Â Â </b></td></tr>"
-                     + "<tr><td colspan='2'></td><td style='border-top: 1px solid #D3D3D3;'></td></tr>"
-                     + "<tr><td colspan='2' style='padding-top: 9px; text-align: right;'>Total Ã  Receber:"
-                     + "<td colspan='2' style='padding-top: 9px; text-align: right; font-size: 11pt;'><b>R$ "+xTotalServicosEmail.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"Â Â </b></td></tr>";
+    xTextoEmail += "<tr><td colspan='4' style='padding-top:4px; border-top:1px solid #D3D3D3;'></td></tr>"
+                 + "<tr style='width:25%; height:25px; text-align: right; min-width:70px; max-width:150px;'><td colspan='2' >Total dos Serviços:</td><td><b>R$ "+xSomaTotalServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</b></td>"
+                 + "<td style='text-align:left; min-width:10px; max-width:80px;'></td></tr>";
+    if (xSomaDesconto > 0) {
+        xTextoEmail += "<tr style='width:25%; text-align: right; min-width:80px; max-width:150px;'><td colspan='2'>Descontos:</td><td style='text-align:right;'><b>R$ "+xSomaDesconto.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</b></td>"
+                     + "<td style='text-align:left; min-width:10px; max-width:10px;'></td></tr>"
+                     + "<tr><td colspan='2'></td><td style='border-top:1px solid #D3D3D3;'></td></tr>"
+                     + "<tr style='padding-top:3px; width:25%; height:25px; text-align: right; min-width:70px; max-width:140px;'><td colspan='2'>Total à Receber:</td><td style='text-align:right;'><b>R$ "+xSomaValorReceber.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</b></td>"
+                     + "<td style='text-align:left; min-width:10px; max-width:10px;'></td></tr>";
     };
 
-    xTextoEmail += "<tr style='height: 10px;'><td colspan='3'></td></tr>"
-                + "<tr><td colspan='3' style='border-top: 1px solid #D3D3D3;'></td></tr>"
-                + "<tr><td colspan='3' style='height: 23px; padding-top: 5px;'>Â Pagador: <b>" + document.FormCriarMail.Pagador.value + "</b></td></tr>"
-                + "<tr><td colspan='3' style='height: 23px;'>Â Vencimento: <b>" + document.FormCriarMail.Vencimento.value + "</b></td></tr>"
-                + "<tr><td colspan='3' style='height: 23px; padding-bottom: 8px;'>Â CÃ³digo de Barras: <font size=1pt><b>" + document.FormCriarMail.CodigoDeBarras.value + "</b></font></td></tr>"
-                + "<tr><td colspan='3' style='border-top: 1px solid #D3D3D3;'></td></tr>"
-                + "<tr><td colspan='3' style='height: 15px;'></td></tr>"
-                + "<tr><td colspan='3' style='height: 30px;'>Â Atenciosamente,</td></tr>"
-                + "<tr><td colspan='3' style='height: 12px;'></td></tr>"
-                + "<tr><td colspan='3'>Â <i>RogÃ©rio Xavier</i></td></tr>"
-                + "<tr><td colspan='3'>Â <font size=1pt><i>(15)</font><b>99745-0446</b></i></td></tr>"
-                + "<tr><td colspan='3' style='border-top: 1px solid #D3D3D3;'></td></tr>"
-                + "<tr style='height: 8px;'><td colspan='3'></tr></td>"
-                + "<tr><td colspan='3'>Â </tr></td>";
+  xTextoEmail += "<tr style='height: 5px;'><td colspan='4'></td></tr>"
+                + "<tr><td colspan='4' style='border-top:1px solid #D3D3D3;'></td></tr>"
+                + "<tr><td colspan='4' style='height:23px; padding-top: 5px;'> Pagador: <b>" + document.FormCriarMail.Pagador.value + "</b></td></tr>"
+                + "<tr><td colspan='4' style='height:23px;'> Vencimento: <b>" + document.FormCriarMail.Vencimento.value + "</b></td></tr>"
+                + "<tr><td colspan='4' style='height:23px; padding-bottom:8px;'> Código de Barras: <font size=1pt><b>" + document.FormCriarMail.CodigoDeBarras.value + "</b></font></td></tr>"
+                + "<tr><td colspan='4' style='border-top: 1px solid #D3D3D3;'></td></tr>"
+                + "<tr><td colspan='4' style='height:15px;'></td></tr>"
+                + "<tr><td colspan='4' style='height:30px;'> Atenciosamente,</td></tr>"
+                + "<tr><td colspan='4' style='height:12px;'></td></tr>"
+                + "<tr><td colspan='4'> <i>Rogério Xavier</i></td></tr>"
+                + "<tr><td colspan='4'> <font size=1pt><i>(15)</font><b>99745-0446</b></i></td></tr>"
+                + "<tr><td colspan='4' style='border-top:1px solid #D3D3D3;'></td></tr>"
+                + "<tr style='height: 8px;'><td colspan='4'></tr></td>"
+                + "<tr><td colspan='4'> </tr></td>";
             + "</table>";
 
     document.getElementById("TextoEmail").innerHTML = xTextoEmail;
+    //document.body.innerHTML = xTextoEmail;
 
     window.scrollTo(0, 0);
 };
@@ -695,6 +725,7 @@ function LimpaMail() {
         eval("document.FormCriarMail.DescricaoMail"+i).value = "";
         eval("document.FormCriarMail.Valor"+i).value = null;
         eval("document.FormCriarMail.Desconto"+i).value = null;
+        eval("document.FormCriarMail.Nome"+i).value = null;
 	};
 	document.FormCriarMail.Desconto.value = null;
 	document.FormCriarMail.Pagador.value = null;
@@ -706,18 +737,18 @@ function LimpaMail() {
 
 // **************************** Tela para copiar o corpo do eMail
 function CopiarMail() {
+    eval("document.getElementById('DivFormGerarMail').style.width = '"+xPixel+"px';");
     document.getElementById("BotoesMail").style.visibility = "hidden";
     document.getElementById("CopiarMailApp").backgroundColor = "RGB(255, 255, 0)";
-    document.getElementById("CopiarMailApp").value = "** Copiado! Agora Ã© sÃ³ colar **";
+    document.getElementById("CopiarMailApp").value = "** Copiado! Agora é só colar **";
     setTimeout(function(){document.getElementById("BotoesMail").style.visibility = "visible";},500);
 
     document.execCommand('selectAll', false, null);
 
     setTimeout(function(){document.execCommand('copy');},250);
     setTimeout(function(){window.getSelection().removeAllRanges();},1000);
-    setTimeout(function(){
-        document.getElementById("CopiarMailApp").value = "Copiar Documento";
-    },5000);
+    setTimeout(function(){document.getElementById("DivFormGerarMail").style.width = "380px";},1000);
+    setTimeout(function(){document.getElementById("CopiarMailApp").value = "Copiar Documento";},5000);
 };
 
 
@@ -759,7 +790,7 @@ function CopiarTextoProposta() {
 
 
 
-// **************************** MÃ¡scara para Telefones
+// **************************** Máscara para Telefones
 function MascaraTelefone(Telefone){
     if (Telefone.value==" "){ Telefone.value = "" };
     if (Telefone.value.length == 1){ Telefone.value = "(" + Telefone.value };
@@ -769,7 +800,7 @@ function MascaraTelefone(Telefone){
 
 
 
-// **************************** MÃ¡scara para Datas
+// **************************** Máscara para Datas
 function MascaraData(Data){
     if (Data.value==" "){ Data.value = "" };
     if (Data.value.length == 2){ Data.value += "/" };
