@@ -59,7 +59,7 @@ html, xbody {
 .InputProposta {
 	font-size: 8pt;
 	text-align: left;
-	width: 99%;
+	width: 98%;
 	height: 135px;
 	border: 0px;
 }
@@ -79,7 +79,7 @@ html, xbody {
     width: 360px;
     top: 15px;
     padding: 0px 0px 0px 5px; /* Top Rig Bot Lef*/
-    background: RGB(225, 225, 225);
+    background: RGB(225, 225, 225, .9);
     -webkit-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
     -moz-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
     box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
