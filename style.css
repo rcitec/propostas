@@ -45,15 +45,16 @@ html, xbody {
     width: 90px;
 	font-size: 12pt;
 	text-align: right;
+	color: RGB(80, 80, 80);
 }
 
 .ResultadoForm {
-	color: #333333;
 	background-color: #D3D3D3;
 	font-size: 14pt;
 	text-align: right;
 	width: 132px;
 	border: 0px;
+	color: RGB(80, 80, 80);
 }
 
 .InputProposta {
@@ -68,6 +69,7 @@ html, xbody {
 	font-size: 12pt;
 	width: 90%;
 	height: 25px;
+	color: RGB(80, 80, 80);
 }
 
 .PopUpApp {
@@ -83,6 +85,7 @@ html, xbody {
     -webkit-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
     -moz-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
     box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
+    z-index: 9999;
 }
 
 .InputDataMail {
@@ -123,10 +126,11 @@ html, xbody {
 
 .Alerta{
    position: absolute;
-   width: 200px;
+   width: 250px;
    padding: 5px 20px 20px;
-   background: RGB(225, 225, 225);
+   background: RGB(255, 255, 255);
    border: 1px solid #999;
+   border-radius: 10px;
    text-align: center;
    transform: translate(-50%,-50%);
    top: 200px;
@@ -139,12 +143,16 @@ html, xbody {
 
 .FundoTransparente {
 	position: absolute;
-	margin-left: -12px;
+	margin-left: -8px;
     margin-right: auto;
-    top: -12px;
-    width: 379px;
-    height: 860px;
-	background-color: RGB(255, 255, 255, .8);
+    top: -10px;
+    width: 380px;
+    height: 100%;
+    background: RGB(0, 0, 0, .07);
+    -webkit-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
+    -moz-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
+    box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
+    z-index: 5000;
 }
 
 .PulaLinha {
