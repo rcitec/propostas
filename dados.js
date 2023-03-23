@@ -120,7 +120,6 @@ function initApp() {
     document.getElementById("Alterar").disabled = true;
     document.getElementById("Excluir").disabled = true;
     document.getElementById("RegistroDataAtual").disabled = true;
-ConfigurarApp();
 };
 
 
