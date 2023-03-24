@@ -127,16 +127,15 @@ html, xbody {
     height: 140px;
     left: 0;
     right: 0 ;
-    margin-top: 40%;
+    margin-top: 25%;
     margin-left: auto;
     margin-right: auto;
     background: RGB(255, 255, 255);
     border: 1px solid #999;
     border-radius: 10px;
     text-align: center;
-    -webkit-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
-    -moz-box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
-    box-shadow: 0px 0px 33px -6px rgba(0,0,0,0.59);
+    box-shadow: 0px 0px 33px 6px rgba(0,0,0,0.7);
+
 }
 
 .TelaCopiaEmail {
