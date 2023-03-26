@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 
+
 <html lang="pt-br">
     <head>
-        <title>RCI-Tec .::Propostas::.</title>
+        <title>RCI-Tec .::Login::.</title>
         <meta http-equiv="Content-type" content="text/html">
         <meta name="viewport" content="width=device-width, user-scalable=no" />
 
@@ -10,26 +11,23 @@
 		<link rel="stylesheet" href="style.css" type="text/css" />
 
         <script language='JavaScript' type='text/JavaScript'>
-            history.pushState({pagina: 1}, "RciTecIni", "?rcitec");
-            history.pushState({pagina: 2}, "RciTecPropostas", "?index");
-
             function onInit(){
-                //window.onbeforeunload = function(){return "";};
-            	location="index.html";
+                window.onbeforeunload = function(){return "";};
+            	//location="index.html";
             };
 
             function fifteenth(form) {
                 if (form.sixteenth.value=='roger') { 
-                    if (form.pass.value=='123') {location='index.html' ;} 
+                    if (form.pass.value=='1') {location='index.html' ;} 
                         else {alert('Senha Incorreta')}} 
-                else {  alert('Usu√°rio n√£o Encontrado')}}
+                else {  alert('Usu·rio n„o Encontrado')}};
         </script>
 
     </head>
 
     <body onload="onInit()">
-        <p>redirecionando, aguarde um momento...</p>
-        <!--center>
+        <!--p>redirecionando, aguarde um momento...</p-->
+        <center>
             <table bgcolor="#E9E9E9" cellpadding='10' border='1'>
                 <tr><td colspan='2'>
                     <center><h2><i><b>Login Area</b></i></h2></center>
@@ -43,6 +41,6 @@
                     </td>
                 </tr>
             </table>
-        </center-->
+        </center>
     </body>
 </html>
