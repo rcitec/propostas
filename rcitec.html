@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html lang="pt-br">
     <head>
         <title>RCI-Tec .::Login::.</title>
@@ -18,36 +19,37 @@
                 if (form.sixteenth.value=='') { 
                     if (form.pass.value=='') {location='index.html' ;} 
                         else {alert('Senha Incorreta')}} 
-                else {  alert('Usu√°rio n√£o Encontrado')}};
+                else {  alert('Usu·rio n„o Encontrado')}};
         </script>
 
     </head>
 
     <body onload="onInit()">
         <!--p>redirecionando, aguarde um momento...</p-->
-        <br><br>
+        <br><br><br>
         <center>
-            <table cellspacing="0" cellpadding='5' border="1" bordercolor="#C3C3C3" style="box-shadow: 0px 0px 33px 6px rgba(0,0,0,0.7);">
+            <table width="330px" cellspacing="0" cellpadding='5' bgcolor="#F5F5F5" style="box-shadow: 0px 0px 45px 6px rgba(0,0,0,0.7);">
                 <tr><td colspan='2'><center><h3>Login Area</h3></center></td></tr>
                 <tr>
-                    <td><h3>UserID:</h3></td>
+                    <td align="right"><h3>UserID:</h3></td>
                     <td>
                         <form name='FormLogin'>
                             <input name='sixteenth' class="InputForm" type='text'>
                     </td>
                 </tr>
                 <tr>
-                    <td><h3>Password:</h3></td>
+                    <td align="right"><h3>Password:</h3></td>
                     <td>
                             <input name='pass' class="InputForm" type='password'></td></tr><tr><td><center>
-                            <input type='Reset'>
+                            <br><input type='Reset'>
                     </center>
                     </td>
                     <td>
-                        <center><input type='button' value='Login' class="Botao" onClick='fifteenth(this.form)'>
+                        <center><br><input type='button' value='Login' class="Botao" onClick='fifteenth(this.form)'>
                         </form>
                     </td>
                 </tr>
+                <tr><td colspan="2"></td></tr>
             </table>
         </center>
     </body>
