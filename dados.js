@@ -185,7 +185,7 @@ function CalculaViagem() {
     xCustoTotal = xCustoCombustivel+xPedagio+xAjudante;
 
     // Custo Km
-    xCustoKm = Number((xCustoTotal/xDistancia).toFixed(2));
+    xCustoKm = Number(((xCustoTotal-xPedagio-xAjudante)/xDistancia).toFixed(2));
 
     // Total dos Servicos
     xTotalDosServicos = xFreteLiquido+xPedagio+xAjudante;
