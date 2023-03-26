@@ -12,13 +12,12 @@
 
         <script language='JavaScript' type='text/JavaScript'>
             function onInit(){
-                window.onbeforeunload = function(){return "";};
-            	//location="index.html";
+                //window.onbeforeunload = function(){return "";};
             };
 
             function fifteenth(form) {
-                if (form.sixteenth.value=='roger') { 
-                    if (form.pass.value=='1') {location='index.html' ;} 
+                if (form.sixteenth.value=='') { 
+                    if (form.pass.value=='') {location='index.html' ;} 
                         else {alert('Senha Incorreta')}} 
                 else {  alert('Usuário não Encontrado')}};
         </script>
@@ -27,17 +26,27 @@
 
     <body onload="onInit()">
         <!--p>redirecionando, aguarde um momento...</p-->
+        <br><br>
         <center>
-            <table bgcolor="#E9E9E9" cellpadding='10' border='1'>
-                <tr><td colspan='2'>
-                    <center><h2><i><b>Login Area</b></i></h2></center>
-                    </td></tr><tr><td><h2><i><b>UserID:</b></i></h2></td><td>
-                    <form name='FormLogin'>
-                        <input name='sixteenth' type='text'></td></tr><tr><td><h2><i><b>Password:</b></i></h2></td><td>
-                        <input name='pass' type='password'></td></tr><tr><td><center>
-                        <input type='button' value='Login' onClick='fifteenth(this.form)'></center></td><td><center>
-                        <input type='Reset'>
-                    </form>
+            <table cellspacing="0" cellpadding='5' border="1" bordercolor="#C3C3C3" style="box-shadow: 0px 0px 33px 6px rgba(0,0,0,0.7);">
+                <tr><td colspan='2'><center><h3>Login Area</h3></center></td></tr>
+                <tr>
+                    <td><h3>UserID:</h3></td>
+                    <td>
+                        <form name='FormLogin'>
+                            <input name='sixteenth' class="InputForm" type='text'>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h3>Password:</h3></td>
+                    <td>
+                            <input name='pass' class="InputForm" type='password'></td></tr><tr><td><center>
+                            <input type='Reset'>
+                    </center>
+                    </td>
+                    <td>
+                        <center><input type='button' value='Login' class="Botao" onClick='fifteenth(this.form)'>
+                        </form>
                     </td>
                 </tr>
             </table>
