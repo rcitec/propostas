@@ -53,7 +53,7 @@ html, xbody {
 }
 
 .ResultadoForm {
-	background-color: #D3D3D3;
+	background-color: RGB(225, 225, 225);
 	font-size: 14pt;
 	text-align: right;
 	width: 132px;
@@ -115,9 +115,11 @@ html, xbody {
     width: 77px;
     font-size: 11pt;
     text-align: right;
-	border-radius: 5px;
-	border-style: none;
-	box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
+	/*border-radius: 5px;*/
+	border-style: solid;
+	border-width: 1px;
+	border-color: RGB(210, 210, 210);
+	/*box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);*/
 }
 
 .PopUpTextoMail {
