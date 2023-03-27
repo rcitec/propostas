@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html lang="pt-br">
     <head>
         <title>RCI-Tec .::Login::.</title>
@@ -10,19 +11,26 @@
 		<link rel="stylesheet" href="style.css" type="text/css" />
 
         <script language='JavaScript' type='text/JavaScript'>
-            function onInit(){
-                //window.onbeforeunload = function(){return "";};
-            };
-
+            // **************************** Auth
             function fifteenth(form) {
                 if (form.sixteenth.value=='') {
-                    if (form.pass.value=='') {location='rcitec.html' ;}
-                        else {alert('Senha Incorreta')}}
-                else {  alert('Usu√°rio n√£o Encontrado')}};
+                    if (form.pass.value=='') {
+                        var xAuth=String(Math.random()).substr(3,10);
+                            xAuth+=String(Math.random()).substr(3,10);
+                            xAuth+=String(Math.random()).substr(3,10);
+
+                        localDB = window.openDatabase('RciTec', '1.0', 'dbRciTec_Propostas', 200000);
+                        localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET Auth="'+xAuth+'";');});
+
+                        setTimeout(function(){location='rcitec.html?'+xAuth;},500);
+                    }
+                    else {alert('Senha Incorreta')}}
+                    else {alert('Usu·rio n„o Encontrado')};
+            };
         </script>
     </head>
 
-    <body onload="onInit()">
+    <body>
         <!--p>redirecionando, aguarde um momento...</p-->
         <br><br><br>
         <center>
