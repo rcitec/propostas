@@ -78,7 +78,7 @@ function initDB() {
 
 // **************************** Inicia Tabelas
 function initTabelas() {
-localDB.transaction(function(tx) {tx.executeSql('ALTER TABLE Combustivel ADD COLUMN Auth TEXT NULL;');});
+    //localDB.transaction(function(tx) {tx.executeSql('ALTER TABLE Combustivel ADD COLUMN Auth TEXT NULL;');});
 
     setTimeout(function(){
         query = "SELECT * FROM Combustivel;";
