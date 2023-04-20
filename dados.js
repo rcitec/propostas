@@ -1,57 +1,59 @@
 // Base de Dados
 // C:\Users\Roger\AppData\Local\Google\Chrome\User Data\Default\databases\file__0
 
-// **************************** Declara VariÃ¡veis
-localDB = null;
-transacao = null;
 
-xId = 0;
-xValorCombustivel = 0;
-xMediaConsumo = 0;
-xDescontoPorFaixaKm = 0;
-xDescontoKm = 0;
-xValorKm = 0;
-xValorKmCheio = 0;
-xValorKmCobrado = 0;
-xValorMaximoKmCobrado = 0;
-xValorMinimoKmCobrado = 0;
-xDistancia = 0;
-xPedagio = 0;
-xAjudante = 0;
-xOutros = 0;
-xPorcentagemDesconto = 0;
-xAjuste = 0;
-xCustoKm = 0;
-xCustoTotal = 0;
-xCustoCombustivel = 0;
-xFreteLiquido = 0;
-xFreteTotal = 0;
-xReceitaLiquida = 0;
-xDescontoFreteLiquido = 0;
-xDescontoTotal = 0;
-xTotalDosServicos = 0;
-xAte = 0;
-xOrigem = "";
-xDestino = "";
-xNome = "";
-xTelefone = "";
+// **************************** Declara Variáveis
+//localDB = null;
+//transacao = null;
+
+//xId = 0;
+//xValorCombustivel = 0;
+//xMediaConsumo = 0;
+//xPercentualMaximoKm = 0;
+//xPercentualMinimoKm = 0;
+//xDescontoKm = 0;
+//xValorKm = 0;
+//xValorKmCheio = 0;
+//xValorKmCobrado = 0;
+//xValorMaximoKmCobrado = 0;
+//xValorMinimoKmCobrado = 0;
+//xDistancia = 0;
+//xPedagio = 0;
+//xAjudante = 0;
+//xOutros = 0;
+//xPorcentagemDesconto = 0;
+//xAjuste = 0;
+//xCustoKm = 0;
+//xCustoTotal = 0;
+//xCustoCombustivel = 0;
+//xFreteLiquido = 0;
+//xFreteTotal = 0;
+//xReceitaLiquida = 0;
+//xDescontoFreteLiquido = 0;
+//xDescontoTotal = 0;
+//xTotalDosServicos = 0;
+//xAte = 0;
+//xOrigem = "";
+//xDestino = "";
+//xNome = "";
+//xTelefone = "";
 xProposta = "Proposta...";
-query = "";
+//query = "";
 xClonar = "Nao";
 xEmail = false;
-xTextoEmail = "";
-xTotalServicosEmail = 0;
-xDescontoEmail = 0;
+//xTextoEmail = "";
+//xTotalServicosEmail = 0;
+//xDescontoEmail = 0;
 xNovaProposta = 'Sim';
 xProcurandoProposta = 'Nao';
-xTituloMsgAlerta = "";
-xMensagemAlerta = "";
-xNomeUsuario = "";
-xTelefoneUsuario = "";
+//xTituloMsgAlerta = "";
+//xMensagemAlerta = "";
+//xNomeUsuario = "";
+//xTelefoneUsuario = "";
 
 // **************************** Abre Banco de Dados
 function onInit(){
-	if (!window.openDatabase) {alert("Seu navegador nÃ£o permite criar banco de dados.");}
+	if (!window.openDatabase) {alert("Seu navegador não permite criar banco de dados.");}
 	else { initDB(); };
 };
 
@@ -66,57 +68,46 @@ function initDB() {
 
 	localDB = window.openDatabase(shortName, version, displayName, maxSize);
 
-	localDB.transaction(function(tx) {tx.executeSql('CREATE TABLE Combustivel(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ValorCombustivel INTEGER NULL, MediaConsumo INTEGER NULL, DescontoPorFaixaKm INTEGER NULL, NomeUsuario TEXTE NULL, TelefoneUsuario TEXTE NULL, Auth TEXTE NULL);');});
-	localDB.transaction(function(tx) {tx.executeSql('CREATE TABLE Propostas(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Origem TEXT NULL, Destino TEXT NULL, Nome TEXT NULL, Telefone TEXT NULL, ValorLitroCombustivel INTEGER NULL, Distancia INTEGER NULL, Pedagio INTEGER NULL, Ajudante INTEGER NULL, Outros INTEGER NULL, PorcentagemDesconto TEXT NULL, Ajuste INTEGER NULL, MediaConsumo INTEGER NULL, DescontoPorFaixaKm INTEGER NULL, DescontoFreteLiquido INTEGER NULL, TotalDosServicos INTEGER NULL, DataRegistro INTEGER NULL, Busca TEXT NULL, Email INTEGER FALSE);');});
-	
-	initTabelas();
+	localDB.transaction(function(tx) {tx.executeSql('CREATE TABLE Combustivel(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ValorCombustivel INTEGER NULL, MediaConsumo INTEGER NULL, PercentualMaximoKm INTEGER NULL, PercentualMinimoKm INTEGER NULL, NomeUsuario TEXTE NULL, TelefoneUsuario TEXTE NULL, Auth TEXTE NULL);');});
+	localDB.transaction(function(tx) {tx.executeSql('CREATE TABLE Propostas(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Origem TEXT NULL, Destino TEXT NULL, Nome TEXT NULL, Telefone TEXT NULL, ValorLitroCombustivel INTEGER NULL, Distancia INTEGER NULL, Pedagio INTEGER NULL, Ajudante INTEGER NULL, Outros INTEGER NULL, PorcentagemDesconto TEXT NULL, Ajuste INTEGER NULL, MediaConsumo INTEGER NULL, PercentualMaximoKm INTEGER NULL, PercentualMinimoKm INTEGER NULL, DescontoFreteLiquido INTEGER NULL, TotalDosServicos INTEGER NULL, DataRegistro INTEGER NULL, Busca TEXT NULL, Email INTEGER FALSE);');});
+
+    //localDB.transaction(function(tx) {tx.executeSql('ALTER TABLE Propostas ADD COLUMN Auth TEXT NULL;');});
+
     initApp();
 };
 
 
 
-// **************************** Inicia Tabelas
-function initTabelas() {
-    //localDB.transaction(function(tx) {tx.executeSql('ALTER TABLE Combustivel ADD COLUMN Auth TEXT NULL;');});
-
-    setTimeout(function(){
-        query = "SELECT * FROM Combustivel;";
-        localDB.transaction(function(transaction){
-            transaction.executeSql(query, [], function(transaction, results){
-			var row = results.rows.item(0);
-
-                var xAuth = window.location.href.substr(window.location.href.length-30,30);
-                if (xAuth == row['Auth']) {
-                    xValorCombustivel = row['ValorCombustivel'];
-                    xMediaConsumo = row['MediaConsumo'];
-                    xDescontoPorFaixaKm = row['DescontoPorFaixaKm'];
-                    xNomeUsuario = row['NomeUsuario'];
-                    xTelefoneUsuario = row['TelefoneUsuario'];
-                    document.FormApp.ValorCombustivel.value = row['ValorCombustivel'].toFixed(2);
-                    document.FormConfigurar.ConfigValorCombustivel.value = row['ValorCombustivel'].toFixed(2);
-                    document.FormConfigurar.ConfigMediaConsumo.value = row['MediaConsumo'].toFixed(2);
-                    document.FormConfigurar.ConfigDescontoPorFaixaKm.value = row['DescontoPorFaixaKm'].toFixed(2);
-                    document.FormConfigurar.NomeUsuario.value = row['NomeUsuario'];
-                    document.FormConfigurar.TelefoneUsuario.value = row['TelefoneUsuario'];
-                    if (xValorCombustivel == 0){
-                        localDB.transaction(function(tx) {tx.executeSql('INSERT or REPLACE INTO Combustivel (Id, ValorCombustivel, MediaConsumo, DescontoPorFaixaKm) VALUES (1, 9.99, 8, 5);');});
-                    };
-                }
-                else {
-                    alert("NÃ£o Autenticado, efetue o Login!");
-                    location='index.html';
-                    return;
-                };
-		  }, function(transaction, error){alert("Erro: " + error.code + ' | ' + error.message);})
-	   });
-    },250);
-
-    setTimeout(function(){AtualizaTabelaFaixasKm();},350);
-};
-
-
 // **************************** Inicia App
 function initApp() {
+    query = "SELECT * FROM Combustivel;";
+    localDB.transaction(function(transaction){
+
+    transaction.executeSql(query, [], function(transaction, results){
+        var row = results.rows.item(0);
+        var xAuth = window.location.href.substr(window.location.href.length-30,30);
+
+        if (xAuth == row['Auth']) {
+            xNomeUsuario = row['NomeUsuario'];
+            xTelefoneUsuario = row['TelefoneUsuario'];
+
+            document.FormApp.ValorCombustivel.value = row['ValorCombustivel'].toFixed(2);
+            document.FormConfigurar.ConfigValorCombustivel.value = row['ValorCombustivel'].toFixed(2);
+            document.FormConfigurar.ConfigMediaConsumo.value = row['MediaConsumo'].toFixed(2);
+            document.FormConfigurar.ConfigPercentualMaximoKm.value = row['PercentualMaximoKm'].toFixed(2);
+            document.FormConfigurar.ConfigPercentualMinimoKm.value = row['PercentualMinimoKm'].toFixed(2);
+            document.FormConfigurar.NomeUsuario.value = row['NomeUsuario'];
+            document.FormConfigurar.TelefoneUsuario.value = row['TelefoneUsuario'];
+            AtualizaValorKm();
+        }
+        else {
+            alert("Não Autenticado, efetue o Login!");
+            location='index.html';
+            return;
+        };
+    }, function(transaction, error){alert("Erro: " + error.code + ' | ' + error.message);})
+    });
+
     window.onbeforeunload = function(){return "";};
 
     document.getElementById("DivFormApp").style.visibility = "visible";
@@ -164,25 +155,16 @@ function CalculaViagem() {
     xPedagio = Number(document.FormApp.Pedagio.value);
     xAjudante = Number(document.FormApp.Ajudante.value);
 
-    // Valor por Faixa de Km
-	if (xDistancia>-1 && xDistancia<51){xValorKmCobrado = document.FormConfigurar.ValorKm1.value;};
-	if (xDistancia>50 && xDistancia<101){xValorKmCobrado = document.FormConfigurar.ValorKm2.value;};
-	if (xDistancia>100 && xDistancia<201){xValorKmCobrado = document.FormConfigurar.ValorKm3.value;};
-	if (xDistancia>200 && xDistancia<301){xValorKmCobrado = document.FormConfigurar.ValorKm4.value;};
-	if (xDistancia>300 && xDistancia<401){xValorKmCobrado = document.FormConfigurar.ValorKm5.value;};
-	if (xDistancia>400 && xDistancia<501){xValorKmCobrado = document.FormConfigurar.ValorKm6.value;};
-	if (xDistancia>500 && xDistancia<601){xValorKmCobrado = document.FormConfigurar.ValorKm7.value;};
-	if (xDistancia>600 && xDistancia<701){xValorKmCobrado = document.FormConfigurar.ValorKm8.value;};
-	if (xDistancia>700 && xDistancia<801){xValorKmCobrado = document.FormConfigurar.ValorKm9.value;};
-	if (xDistancia>800 && xDistancia<901){xValorKmCobrado = document.FormConfigurar.ValorKm10.value;};
-	if (xDistancia>900 && xDistancia<1001){xValorKmCobrado = document.FormConfigurar.ValorKm11.value;};
-	if (xDistancia>1000){xValorKmCobrado = document.FormConfigurar.ValorKm12.value;};
+    // Valor Minimo e Máximo do Km Cobrado
+	xValorMaximoKm = document.FormConfigurar.ValorMaximoKm.value;
+	xValorMinimoKm = document.FormConfigurar.ValorMinimoKm.value;
 
-    // Valor Minimo e MÃ¡ximo do Km Cobrado
-	xValorMaximoKmCobrado = document.FormConfigurar.ValorKm1.value;
-	xValorMinimoKmCobrado = document.FormConfigurar.ValorKm12.value;
+    // Valor do Km Cobrado
+    xDescontoKm = (xValorMaximoKm-xValorMinimoKm)/1000;
+    if (xDistancia < 1001) {xValorKmCobrado = xValorMaximoKm-(xDistancia*xDescontoKm);}
+    else {xValorKmCobrado = xValorMaximoKm-(1000*xDescontoKm);};
 
-    // Custo CombustÃ­vel
+    // Custo Combustível
     xCustoCombustivel = (xDistancia/xMediaConsumo)*xValorCombustivel;
     xCustoCombustivel = String(xCustoCombustivel.toFixed(2));
     xCustoCombustivel = Number(xCustoCombustivel);
@@ -193,7 +175,7 @@ function CalculaViagem() {
     xFreteLiquido = Number(xFreteLiquido);
  
     // Frete Total
-    xFreteTotal = xValorMaximoKmCobrado*xDistancia;
+    xFreteTotal = xValorMaximoKm*xDistancia;
     xFreteTotal = String(xFreteTotal.toFixed(2));
     xFreteTotal = Number(xFreteTotal);
 
@@ -255,12 +237,12 @@ function CalculaViagem() {
         "```Desconto.: -R$``` "+xDescontoFreteLiquido.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" ("+xDescontoTotal.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:1})+ "%)\n" +
         "```Ajudante.: +R$``` "+xAjudante.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "\n" +
-        "*Total dos ServiÃ§os R$ "+xTotalDosServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"*";
+        "*Total dos Serviços R$ "+xTotalDosServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"*";
     document.FormApp.Proposta.value = xProposta;
 
-    if (xValorKm < xValorMinimoKmCobrado-.005) {
-        xTituloMsgAlerta = "AtenÃ§Ã£o !";
-        xMensagemAlerta = "O Valor do Km Cobrado estÃ¡ abaixo do MÃ­nimo.";
+    if (xValorKm < xValorMinimoKm-.005) {
+        xTituloMsgAlerta = "Atenção !";
+        xMensagemAlerta = "O Valor do Km Cobrado está abaixo do Mínimo.";
         Alerta();
     };
 };
@@ -284,35 +266,30 @@ function AtualizaCombustivel() {
     document.FormApp.ValorCombustivel.value = xValorCombustivel;
     document.FormConfigurar.ConfigValorCombustivel.value = xValorCombustivel;
 
-    AtualizaTabelaFaixasKm();
+    AtualizaValorKm();
 	setTimeout(function(){CalculaViagem()},300);
 };
 
 
 
-// **************************** Atualiza Tabela Faixas Km
-function AtualizaTabelaFaixasKm() {
-    xDescontoKm = 1+(xDescontoPorFaixaKm/100);
+// **************************** Atualiza Valor Km
+function AtualizaValorKm() {
 	xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
-	xValorKmCheio = ((xValorCombustivel/xMediaConsumo)*3.5).toFixed(2);
-	
-	document.FormConfigurar.ValorKm1.value = xValorKmCheio;
-	document.FormConfigurar.ValorKm2.value = (document.FormConfigurar.ValorKm1.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm3.value = (document.FormConfigurar.ValorKm2.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm4.value = (document.FormConfigurar.ValorKm3.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm5.value = (document.FormConfigurar.ValorKm4.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm6.value = (document.FormConfigurar.ValorKm5.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm7.value = (document.FormConfigurar.ValorKm6.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm8.value = (document.FormConfigurar.ValorKm7.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm9.value = (document.FormConfigurar.ValorKm8.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm10.value = (document.FormConfigurar.ValorKm9.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm11.value = (document.FormConfigurar.ValorKm10.value/xDescontoKm).toFixed(2);
-	document.FormConfigurar.ValorKm12.value = (document.FormConfigurar.ValorKm11.value/xDescontoKm).toFixed(2);
+	xMediaConsumo = Number(document.FormConfigurar.ConfigMediaConsumo.value);
+	xConfigPercentualMaximoKm = Number(document.FormConfigurar.ConfigPercentualMaximoKm.value);
+	xConfigPercentualMinimoKm = Number(document.FormConfigurar.ConfigPercentualMinimoKm.value);
+
+	xValorMaximoKm = ((xValorCombustivel/xMediaConsumo)*xConfigPercentualMaximoKm).toFixed(2);
+	xValorMinimoKm = ((xValorCombustivel/xMediaConsumo)*xConfigPercentualMinimoKm).toFixed(2);
+
+    document.FormConfigurar.CustoKm.value = (xValorCombustivel/xMediaConsumo).toFixed(2);
+    document.FormConfigurar.ValorMaximoKm.value = xValorMaximoKm;
+    document.FormConfigurar.ValorMinimoKm.value = xValorMinimoKm;
 };
 
 
 
-// **************************** OpÃ§Ã£o Buscar
+// **************************** Opção Buscar
 function BuscaProposta() {
     document.getElementById("DivFormApp").style.visibility = "hidden";
     document.getElementById("DivOpcoesHomeApp").style.visibility = "hidden";
@@ -353,8 +330,8 @@ function BuscaProposta() {
                     "<tr height='30px'><td colspan='2'><hr></td></tr>" +
                     "<tr>" +                        
                         "<td colspan='2' align='center'>" +
-                            "<input type='button' value='  Voltar  ' onclick='FecharBusca()'/>Â Â Â Â Â Â Â Â " +
-                            "<input type='button' value='Â Limpar MarcaÃ§Ãµes eMailÂ ' onclick='LimpaStatusEmail()'/>Â Â Â Â Â Â Â Â " +
+                            "<input type='button' value='  Voltar  ' onclick='FecharBusca()'/>        " +
+                            "<input type='button' value=' Limpar Marcações eMail ' onclick='LimpaStatusEmail()'/>        " +
                             "<input type='button' value='  Filtrar  ' onclick='FiltrarBusca()'/>" +
                             "<br>" +
                         "</td>" +
@@ -407,9 +384,9 @@ function RegisroSelecionado(clicked_id) {
             document.getElementById("RegistroDataAtual").value = "Id "+row['Id']+" - "+row['DataRegistro'].substr(0,16);
             document.FormConfigurar.ConfigValorCombustivel.value = row['ValorLitroCombustivel'].toFixed(2);
             document.FormConfigurar.ConfigMediaConsumo.value = row['MediaConsumo'].toFixed(2);
-            document.FormConfigurar.ConfigDescontoPorFaixaKm.value = row['DescontoPorFaixaKm'].toFixed(2);
+            document.FormConfigurar.ConfigPercentualMaximoKm.value = row['PercentualMaximoKm'].toFixed(2);
+            document.FormConfigurar.ConfigPercentualMinimoKm.value = row['PercentualMinimoKm'].toFixed(2);
             xMediaConsumo = row['MediaConsumo'].toFixed(2);
-            xDescontoPorFaixaKm = row['DescontoPorFaixaKm'].toFixed(2);
 
 			setTimeout(function(){AtualizaCombustivel()},250);
 
@@ -439,7 +416,7 @@ function FecharBusca() {
 
 
 
-// **************************** Formata NÃºmero para 2 digitos decimais
+// **************************** Formata Número para 2 digitos decimais
 function FormataNumero(xNumero) {
     xNumero.value = parseFloat(xNumero.value).toFixed(2);
 };
@@ -485,7 +462,7 @@ function GravaNovaData() {
 
 
 
-// **************************** OpÃ§Ã£o Gravar / Alterar
+// **************************** Opção Gravar / Alterar
 function GravaProposta() {
     xAgora = new Date();
     var dia = xAgora.getDate();
@@ -509,7 +486,8 @@ function GravaProposta() {
     xPorcentagemDesconto = Number(document.FormApp.PorcentagemDesconto.value);
 	xAjuste = Number(document.FormApp.Ajuste.value);
 	xMediaConsumo = Number(document.FormConfigurar.ConfigMediaConsumo.value);
-    xDescontoPorFaixaKm = Number(document.FormConfigurar.ConfigDescontoPorFaixaKm.value);
+    xPercentualMaximoKm = Number(document.FormConfigurar.ConfigPercentualMaximoKm.value);
+    xPercentualMinimoKm = Number(document.FormConfigurar.ConfigPercentualMinimoKm.value);
     xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
     xDescontoFreteLiquido = document.FormApp.DescontoFreteLiquido.value.replace(".","");
     xTotalDosServicos = document.FormApp.TotalDosServicos.value.replace(".","");
@@ -518,7 +496,7 @@ function GravaProposta() {
     var xClonando = xClonar;
 
     if (xNovaProposta == 'Sim'){
-        localDB.transaction(function(tx) {tx.executeSql('INSERT INTO Propostas (Origem, Destino, Nome, Telefone, ValorLitroCombustivel, Distancia, Pedagio, Ajudante, Outros, PorcentagemDesconto, Ajuste, MediaConsumo, DescontoPorFaixaKm, DescontoFreteLiquido, TotalDosServicos, DataRegistro, Busca, Email) VALUES ("'+xOrigem+'", "'+xDestino+'", "'+xNome+'", "'+xTelefone+'", '+xValorCombustivel+', '+xDistancia+', '+xPedagio+', '+xAjudante+', '+xOutros+', '+xPorcentagemDesconto+', '+xAjuste+', '+xMediaConsumo+', '+xDescontoPorFaixaKm+', '+xDescontoFreteLiquido+', '+xTotalDosServicos+', "'+xAgora+' ['+xAgoraInvertida+']'+'", "'+xOrigem+' '+xDestino+' '+xNome+' '+xTelefone+'", '+xEmail+');');});
+        localDB.transaction(function(tx) {tx.executeSql('INSERT INTO Propostas (Origem, Destino, Nome, Telefone, ValorLitroCombustivel, Distancia, Pedagio, Ajudante, Outros, PorcentagemDesconto, Ajuste, MediaConsumo, PercentualMaximoKm, PercentualMinimoKm, DescontoFreteLiquido, TotalDosServicos, DataRegistro, Busca, Email) VALUES ("'+xOrigem+'", "'+xDestino+'", "'+xNome+'", "'+xTelefone+'", '+xValorCombustivel+', '+xDistancia+', '+xPedagio+', '+xAjudante+', '+xOutros+', '+xPorcentagemDesconto+', '+xAjuste+', '+xMediaConsumo+', '+xPercentualMaximoKm+', '+xPercentualMinimoKm+', '+xDescontoFreteLiquido+', '+xTotalDosServicos+', "'+xAgora+' ['+xAgoraInvertida+']'+'", "'+xOrigem+' '+xDestino+' '+xNome+' '+xTelefone+'", '+xEmail+');');});
         
         query = "SELECT Id FROM Propostas WHERE Id = (SELECT MAX(ID) FROM Propostas);";
         localDB.transaction(function(transaction){
@@ -542,9 +520,9 @@ function GravaProposta() {
         xClonar = "Nao";
         xNovaProposta = 'Nao';
 
-        // Atualiza Combustivel, MÃ©dia Consumo e Desconto Por FaixaKm
+        // Atualiza Combustivel, Média Consumo e Desconto Por FaixaKm
         xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
-        localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET ValorCombustivel='+xValorCombustivel+', MediaConsumo='+xMediaConsumo+', DescontoPorFaixaKm='+xDescontoPorFaixaKm+';');});
+        localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET ValorCombustivel='+xValorCombustivel+', MediaConsumo='+xMediaConsumo+', PercentualMaximoKm='+xPercentualMaximoKm+', PercentualMinimoKm='+xPercentualMinimoKm+';');});
 
         document.getElementById("Gravar").disabled = true;
         document.getElementById("Alterar").disabled = false;
@@ -552,7 +530,7 @@ function GravaProposta() {
         document.getElementById("Clonar").disabled = false;
     }
     else {
-        localDB.transaction(function(tx) {tx.executeSql('UPDATE Propostas SET Origem="'+xOrigem+'", Destino="'+xDestino+'", Nome="'+xNome+'", Telefone="'+xTelefone+'", ValorLitroCombustivel='+xValorCombustivel+', Distancia='+xDistancia+', Pedagio='+xPedagio+', Ajudante='+xAjudante+', Outros='+xOutros+', PorcentagemDesconto='+xPorcentagemDesconto+', Ajuste='+xAjuste+', MediaConsumo='+xMediaConsumo+', DescontoPorFaixaKm='+xDescontoPorFaixaKm+', DescontoFreteLiquido='+xDescontoFreteLiquido+', TotalDosServicos='+xTotalDosServicos+', DataRegistro="'+xAgora+' ['+xAgoraInvertida+']'+'", Busca="'+xOrigem+' '+xDestino+' '+xNome+' '+xTelefone+'", Email='+xEmail+' WHERE Id='+xId+';');});
+        localDB.transaction(function(tx) {tx.executeSql('UPDATE Propostas SET Origem="'+xOrigem+'", Destino="'+xDestino+'", Nome="'+xNome+'", Telefone="'+xTelefone+'", ValorLitroCombustivel='+xValorCombustivel+', Distancia='+xDistancia+', Pedagio='+xPedagio+', Ajudante='+xAjudante+', Outros='+xOutros+', PorcentagemDesconto='+xPorcentagemDesconto+', Ajuste='+xAjuste+', MediaConsumo='+xMediaConsumo+', PercentualMaximoKm='+xPercentualMaximoKm+', PercentualMinimoKm='+xPercentualMinimoKm+', DescontoFreteLiquido='+xDescontoFreteLiquido+', TotalDosServicos='+xTotalDosServicos+', DataRegistro="'+xAgora+' ['+xAgoraInvertida+']'+'", Busca="'+xOrigem+' '+xDestino+' '+xNome+' '+xTelefone+'", Email='+xEmail+' WHERE Id='+xId+';');});
 
         xTituloMsgAlerta = "Ok";
         xMensagemAlerta = "Proposta "+xId+" Alterada";
@@ -566,7 +544,7 @@ function GravaProposta() {
 
 
 
-// **************************** OpÃ§Ã£o Excluir
+// **************************** Opção Excluir
 function ExcluiProposta(clicked_id) {
     window.onbeforeunload = function(){};
     if (confirm("\n Deseja realmente excluir esta Proposta ?") == true) {
@@ -582,7 +560,7 @@ function ExcluiProposta(clicked_id) {
             document.getElementById("Alterar").disabled = true;
             document.getElementById("Excluir").disabled = true;
             document.getElementById("RegistroDataAtual").disabled = true;
-            document.getElementById("RegistroDataAtual").value = "Â ";
+            document.getElementById("RegistroDataAtual").value = " ";
 
             xNovaProposta = 'Sim';
             xId=clicked_id;
@@ -599,7 +577,7 @@ function ExcluiProposta(clicked_id) {
 
 
 
-// **************************** OpÃ§Ã£o Configurar
+// **************************** Opção Configurar
 function ConfigurarApp() {
     window.scrollTo(0, 0);
 
@@ -611,30 +589,32 @@ function ConfigurarApp() {
 
 
 
-// **************************** OpÃ§Ã£o Gravar Configurar App
+// **************************** Opção Gravar Configurar App
 function GravarConfigApp() {
     xValorCombustivel = parseFloat(document.FormConfigurar.ConfigValorCombustivel.value).toFixed(2);
     xMediaConsumo = parseFloat(document.FormConfigurar.ConfigMediaConsumo.value).toFixed(2);
-    xDescontoPorFaixaKm = parseFloat(document.FormConfigurar.ConfigDescontoPorFaixaKm.value).toFixed(2);
+    xPercentualMaximoKm = parseFloat(document.FormConfigurar.ConfigPercentualMaximoKm.value).toFixed(2);
+    xPercentualMinimoKm = parseFloat(document.FormConfigurar.ConfigPercentualMinimoKm.value).toFixed(2);
 
     document.FormApp.ValorCombustivel.value = xValorCombustivel;
     document.FormConfigurar.ConfigValorCombustivel.value = xValorCombustivel;
     document.FormConfigurar.ConfigMediaConsumo.value = xMediaConsumo;
-    document.FormConfigurar.ConfigDescontoPorFaixaKm.value = xDescontoPorFaixaKm;
+    document.FormConfigurar.ConfigPercentualMaximoKm.value = xPercentualMaximoKm;
+    document.FormConfigurar.ConfigPercentualMinimoKm.value = xPercentualMinimoKm;
 
     window.scrollTo(0, 0);
 
-    // Atualiza Combustivel, MÃ©dia Consumo e Desconto Por FaixaKm
+    // Atualiza Combustivel, Média Consumo e Desconto Por FaixaKm
     xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
-    localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET ValorCombustivel='+xValorCombustivel+', MediaConsumo='+xMediaConsumo+', DescontoPorFaixaKm='+xDescontoPorFaixaKm+';');});
+    localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET ValorCombustivel='+xValorCombustivel+', MediaConsumo='+xMediaConsumo+', PercentualMaximoKm='+xPercentualMaximoKm+', PercentualMinimoKm='+xPercentualMinimoKm+';');});
     
-    AtualizaTabelaFaixasKm();
+    AtualizaValorKm();
     setTimeout(function(){CalculaViagem()},200);
 };
 
 
 
-// **************************** OpÃ§Ã£o Gravar Nome e Telefone UsuÃ¡rio App
+// **************************** Opção Gravar Nome e Telefone Usuário App
 function GravarDadosUsuarioApp() {
     xNomeUsuario = document.FormConfigurar.NomeUsuario.value;
     xTelefoneUsuario = document.FormConfigurar.TelefoneUsuario.value;
@@ -643,7 +623,7 @@ function GravarDadosUsuarioApp() {
 
 
 
-// **************************** OpÃ§Ã£o Voltar Configurar App
+// **************************** Opção Voltar Configurar App
 function VoltarConfigApp() {
     window.scrollTo(0, 0);
 
@@ -654,7 +634,7 @@ function VoltarConfigApp() {
 
 
 
-// **************************** OpÃ§Ã£o Limpar
+// **************************** Opção Limpar
 function LimpaProposta() {
     window.onbeforeunload = function(){};
     location.reload();
@@ -663,7 +643,7 @@ function LimpaProposta() {
 
 
 
-// **************************** OpÃ§Ã£o Clonar
+// **************************** Opção Clonar
 function ClonaProposta() {
     xClonar = "Sim";
     xNovaProposta = "Sim";
@@ -693,8 +673,8 @@ function LimpaStatusEmail() {
 // **************************** Criar EMail
 function EmailApp() {
     if(xNomeUsuario == "" || xTelefoneUsuario == "" || xNomeUsuario == null || xTelefoneUsuario == null){
-        xTituloMsgAlerta = "AtenÃ§Ã£o !";
-        xMensagemAlerta = "NecessÃ¡rio preencher os Dados do UsuÃ¡rio.";
+        xTituloMsgAlerta = "Atenção !";
+        xMensagemAlerta = "Necessário preencher os Dados do Usuário.";
         Alerta();
         setTimeout(function(){ConfigurarApp()},1000);
         document.getElementById("DivFormMail").style.visibility = "hidden";
@@ -718,7 +698,7 @@ function EmailApp() {
                 eval("document.FormCriarMail.DescricaoMail"+x).value = row['Origem'] + " X " + row['Destino'];
                 eval("document.FormCriarMail.Valor"+x).value = (row['TotalDosServicos'] + row['DescontoFreteLiquido']).toFixed(2);
                 eval("document.FormCriarMail.Desconto"+x).value = row['DescontoFreteLiquido'].toFixed(2);
-                eval("document.FormCriarMail.Nome"+x).value = "<br><i style='font-size: 8pt;'>Â Autorizado: "+row['Nome']+"<i/>";
+                eval("document.FormCriarMail.Nome"+x).value = "<br><i style='font-size: 8pt;'> Autorizado: "+row['Nome']+"<i/>";
                 xDescontoEmail += row['DescontoFreteLiquido'];
                 document.FormCriarMail.Desconto.value = xDescontoEmail.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2});
             };
@@ -769,7 +749,7 @@ function GerarMail() {
 
     xTextoEmail = "<table cellspacing='0px' style='margin-left:auto; margin-right:auto; align:center; font-family:calibri; font-size:10pt; color:#8D8D8D; background: RGB(255, 255, 255);'>"
                 + "<tr style='height:12px;'><td colspan='4'></td></tr>"
-                + "<tr><td colspan='4'>Â Prezados, anexo DocumentaÃ§Ã£o referente a:</td></tr>"
+                + "<tr><td colspan='4'> Prezados, anexo Documentação referente a:</td></tr>"
                 + "<tr style='height:12px;'><td colspan='4'></td></tr>";
     for (i = 1; i < 11; i++) {
         var xData = eval("document.FormCriarMail.DataMail"+i).value;
@@ -811,7 +791,7 @@ function GerarMail() {
 
     if (xSomaDesconto == 0) {
         xTextoEmail += "<tr><td colspan='4' style='padding-top:4px; border-top:1px solid #D3D3D3;'></td></tr>"
-                    + "<tr style='width:25%; height:25px; text-align: right; min-width:70px; max-width:150px;'><td colspan='2' ><b>Total dos ServiÃ§os:</b></td><td><b>R$ "+xSomaTotalServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</b></td>"
+                    + "<tr style='width:25%; height:25px; text-align: right; min-width:70px; max-width:150px;'><td colspan='2' ><b>Total dos Serviços:</b></td><td><b>R$ "+xSomaTotalServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</b></td>"
                     + "<td style='text-align:left; min-width:10px; max-width:80px;'></td></tr>";
     } else {
         var xPercDesconto = (xSomaDesconto/xSomaTotalServicos)*100;
@@ -819,33 +799,33 @@ function GerarMail() {
         var xPercDesconto = Number(xPercDesconto);
 
         xTextoEmail += "<tr><td colspan='4' style='padding-top:4px; border-top:1px solid #D3D3D3;'></td></tr>"
-                    + "<tr style='width:25%; height:25px; text-align: right; min-width:70px; max-width:150px;'><td colspan='2' >Total dos ServiÃ§os:</td><td>R$ "+xSomaTotalServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</td>"
+                    + "<tr style='width:25%; height:25px; text-align: right; min-width:70px; max-width:150px;'><td colspan='2' >Total dos Serviços:</td><td>R$ "+xSomaTotalServicos.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</td>"
                     + "<td style='text-align:left; min-width:10px; max-width:80px;'></td></tr>"
                     + "<tr style='width:25%; text-align: right; min-width:80px; max-width:150px;'><td colspan='2'>Descontos ("+xPercDesconto.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:1})+"%): </td><td style='text-align:right;'>R$ "+xSomaDesconto.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</td>"
                     + "<td style='text-align:left; min-width:10px; max-width:10px;'></td></tr>"
                     + "<tr><td colspan='2'></td><td style='border-top:1px solid #D3D3D3;'></td></tr>"
-                    + "<tr style='padding-top:3px; width:25%; height:25px; text-align: right; min-width:70px; max-width:140px;'><td colspan='2'><b>Total Ã  Receber:</b></td><td style='text-align:right;'><b>R$ "+xSomaValorReceber.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</b></td>"
+                    + "<tr style='padding-top:3px; width:25%; height:25px; text-align: right; min-width:70px; max-width:140px;'><td colspan='2'><b>Total à Receber:</b></td><td style='text-align:right;'><b>R$ "+xSomaValorReceber.toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"</b></td>"
                     + "<td style='text-align:left; min-width:10px; max-width:10px;'></td></tr>";
     };
 
     xTextoEmail += "<tr style='height: 5px;'><td colspan='4'></td></tr>"
                 + "<tr><td colspan='4' style='border-top:1px solid #D3D3D3;'></td></tr>"
-                + "<tr><td colspan='4' style='height:23px; padding-top: 5px;'>Â Pagador: <b>" + document.FormCriarMail.Pagador.value + "</b></td></tr>"
-                + "<tr><td colspan='4' style='height:23px;'>Â Vencimento: <b>" + document.FormCriarMail.Vencimento.value + "</b></td></tr>"
-                + "<tr><td colspan='4' style='height:23px; padding-bottom:8px;'>Â CÃ³digo de Barras: <font size=1pt><b>" + document.FormCriarMail.CodigoDeBarras.value + "</b></font></td></tr>"
+                + "<tr><td colspan='4' style='height:23px; padding-top: 5px;'> Pagador: <b>" + document.FormCriarMail.Pagador.value + "</b></td></tr>"
+                + "<tr><td colspan='4' style='height:23px;'> Vencimento: <b>" + document.FormCriarMail.Vencimento.value + "</b></td></tr>"
+                + "<tr><td colspan='4' style='height:23px; padding-bottom:8px;'> Código de Barras: <font size=1pt><b>" + document.FormCriarMail.CodigoDeBarras.value + "</b></font></td></tr>"
                 + "<tr><td colspan='4' style='border-top: 1px solid #D3D3D3;'></td></tr>"
                 + "<tr><td colspan='4' style='height:15px;'></td></tr>"
-                + "<tr><td colspan='4' style='height:30px;'>Â Atenciosamente,</td></tr>"
+                + "<tr><td colspan='4' style='height:30px;'> Atenciosamente,</td></tr>"
                 + "<tr><td colspan='4' style='height:12px;'></td></tr>"
-                + "<tr><td colspan='4'>Â <i>"+xNomeUsuario+"</i></td></tr>"
-                + "<tr><td colspan='4'>Â <font size=1pt><i>"+xTelefoneUsuario.substr(0,4)+" </font><b>"+xTelefoneUsuario.substr(4,10)+"</b></i></td></tr>"
+                + "<tr><td colspan='4'> <i>"+xNomeUsuario+"</i></td></tr>"
+                + "<tr><td colspan='4'> <font size=1pt><i>"+xTelefoneUsuario.substr(0,4)+" </font><b>"+xTelefoneUsuario.substr(4,10)+"</b></i></td></tr>"
                 + "<tr><td colspan='4' style='border-top:1px solid #D3D3D3;'></td></tr>"
                 + "<tr style='height: 8px;'><td colspan='4'></tr></td>"
-                + "<tr><td colspan='4'>Â </tr></td>"
+                + "<tr><td colspan='4'> </tr></td>"
             + "</table>"
             + "<center id='BotoesMail' style='background:RGB(205, 205, 205); border-radius:10px;'>"
                 + "<br>"
-                + "<input id='VoltarMailApp' value='Voltar' style='width:70px; text-align:center' type='button' onClick='VoltarMail()'>Â Â Â Â Â "
+                + "<input id='VoltarMailApp' value='Voltar' style='width:70px; text-align:center' type='button' onClick='VoltarMail()'>     "
                 + "<input id='CopiarMailApp' value='Copiar Documento' style='width:250px; text-align:center' type='button' onClick='CopiarMail()'>"
                 + "<br><br>"
             + "</center>";
@@ -890,7 +870,7 @@ function CopiarMail() {
  
     eval("document.getElementById('DivFundoApp').style.width = '"+xPixel+"px';");
     document.getElementById("CopiarMailApp").backgroundColor = "RGB(255, 255, 0)";
-    document.getElementById("CopiarMailApp").value = "** Copiado! Agora Ã© sÃ³ colar **";
+    document.getElementById("CopiarMailApp").value = "** Copiado! Agora é só colar **";
 
     document.execCommand('selectAll', false, null);
 
@@ -946,7 +926,7 @@ function CopiarTextoProposta() {
 
 
 
-// **************************** MÃ¡scara para Telefones
+// **************************** Máscara para Telefones
 function MascaraTelefone(Telefone){
     window.addEventListener("keydown", function(event) {
         if (event.key == "Backspace") {Return;} 
@@ -961,7 +941,7 @@ function MascaraTelefone(Telefone){
 
 
 
-// **************************** MÃ¡scara para Datas
+// **************************** Máscara para Datas
 function MascaraData(Data){
     window.addEventListener("keydown", function(event) {
 
@@ -1014,7 +994,7 @@ function ApagaBancoDeDados() {
             xMensagemAlerta = "Banco de Dados Apagado";
             Alerta();
 
-            setTimeout(function(){location.reload();},1000);
+            setTimeout(function(){location='index.html';},2000);
         };
     };
 };

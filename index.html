@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 
+
 <html lang="pt-br">
     <head>
         <title>RCI-Tec .::Login::.</title>
         <meta http-equiv="Content-type" content="text/html">
         <meta name="viewport" content="width=device-width, user-scalable=no" />
 
-	<link rel="icon" type="image/png" href="rt.png" />
-	<link rel="stylesheet" href="style.css" type="text/css" />
+		<link rel="icon" type="image/png" href="rt.png" />
+		<link rel="stylesheet" href="style.css" type="text/css" />
 
         <script language='JavaScript' type='text/JavaScript'>
             // **************************** Auth
             function fifteenth(form) {
                 if (form.sixteenth.value=='') {
                     if (form.pass.value=='') {
-                        var xAuth=String(Math.random()).substr(3,10);
-                            xAuth+=String(Math.random()).substr(3,10);
-                            xAuth+=String(Math.random()).substr(3,10);
-
                         localDB = window.openDatabase('RciTec', '1.0', 'dbRciTec_Propostas', 200000);
-                        localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET Auth="'+xAuth+'";');});
 
+                        var xAuth=String(Math.random()).substr(3,10);
+                        xAuth+=String(Math.random()).substr(3,10);
+                        xAuth+=String(Math.random()).substr(3,10);
+
+                        localDB.transaction(function(tx) {tx.executeSql('INSERT OR IGNORE INTO Combustivel(Id) VALUES(1);');});
+                        localDB.transaction(function(tx) {tx.executeSql('UPDATE Combustivel SET Auth="'+xAuth+'" WHERE Id=1');});
+
+                        setTimeout(function(){
+                        query = "SELECT * FROM Combustivel;";
+                        localDB.transaction(function(transaction){
+                            transaction.executeSql(query, [], function(transaction, results){
+                                var row = results.rows.item(0);
+
+                                if (row['ValorCombustivel'] < .1){
+                                    localDB.transaction(function(tx){tx.executeSql('UPDATE Combustivel SET ValorCombustivel=9.99, MediaConsumo=8, PercentualMaximoKm=3.5, PercentualMinimoKm=2.3;');});
+                                };
+
+                            }, function(transaction, error){return;})
+                        });
                         setTimeout(function(){location='rcitec.html?'+xAuth;},500);
+                        },250);
                     }
                     else {alert('Senha Incorreta')}}
-                    else {alert('UsuÃ¡rio nÃ£o Encontrado')};
+                    else {alert('Usuário não Encontrado')};
             };
         </script>
     </head>
