@@ -116,16 +116,16 @@ function CalculaViagem() {
     };
 
     // Custo Combustivel
-	xOutros = Number(document.FormApp.Outros.value);
-	xPorcentagemDesconto = Number(document.FormApp.PorcentagemDesconto.value);
-	xAjuste = Number(document.FormApp.Ajuste.value);
-	xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
+    xOutros = Number(document.FormApp.Outros.value);
+    xPorcentagemDesconto = Number(document.FormApp.PorcentagemDesconto.value);
+    xAjuste = Number(document.FormApp.Ajuste.value);
+    xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
     xPedagio = Number(document.FormApp.Pedagio.value);
     xAjudante = Number(document.FormApp.Ajudante.value);
 
     // Valor Minimo e Máximo do Km Cobrado
-	xValorMaximoKm = document.FormConfigurar.ValorMaximoKm.value;
-	xValorMinimoKm = document.FormConfigurar.ValorMinimoKm.value;
+    xValorMaximoKm = document.FormConfigurar.ValorMaximoKm.value;
+    xValorMinimoKm = document.FormConfigurar.ValorMinimoKm.value;
 
     // Valor do Km Cobrado
     xDescontoKm = (xValorMaximoKm-xValorMinimoKm)/1000;
@@ -138,7 +138,7 @@ function CalculaViagem() {
     xCustoCombustivel = Number(xCustoCombustivel);
 
     // Frete Liquido
-	xFreteLiquido = (xValorKmCobrado*xDistancia)-((xValorKmCobrado*xDistancia)*(xPorcentagemDesconto/100))-xAjuste+xOutros;
+    xFreteLiquido = (xValorKmCobrado*xDistancia)-((xValorKmCobrado*xDistancia)*(xPorcentagemDesconto/100))-xAjuste+xOutros;
     xFreteLiquido = String(xFreteLiquido.toFixed(2));
     xFreteLiquido = Number(xFreteLiquido);
  
@@ -229,12 +229,12 @@ function FormataInputs() {
 
 // **************************** Atualiza Combustivel
 function AtualizaCombustivel() {
-	xValorCombustivel = parseFloat(document.FormApp.ValorCombustivel.value).toFixed(2);
+    xValorCombustivel = parseFloat(document.FormApp.ValorCombustivel.value).toFixed(2);
     document.FormApp.ValorCombustivel.value = xValorCombustivel;
     document.FormConfigurar.ConfigValorCombustivel.value = xValorCombustivel;
 
     AtualizaValorKm();
-	setTimeout(function(){CalculaViagem()},300);
+    setTimeout(function(){CalculaViagem()},300);
 };
 
 
@@ -249,9 +249,10 @@ function AtualizaValorKm() {
 	xValorMaximoKm = ((xValorCombustivel/xMediaConsumo)*xConfigPercentualMaximoKm).toFixed(2);
 	xValorMinimoKm = ((xValorCombustivel/xMediaConsumo)*xConfigPercentualMinimoKm).toFixed(2);
 
-    document.FormConfigurar.CustoKm.value = (xValorCombustivel/xMediaConsumo).toFixed(2);
-    document.FormConfigurar.ValorMaximoKm.value = xValorMaximoKm;
-    document.FormConfigurar.ValorMinimoKm.value = xValorMinimoKm;
+        document.FormConfigurar.CustoKm.value = (xValorCombustivel/xMediaConsumo).toFixed(2);
+        document.FormConfigurar.DescontoKm.value = (xValorMaximoKm-xValorMinimoKm)/1000;
+        document.FormConfigurar.ValorMaximoKm.value = xValorMaximoKm;
+        document.FormConfigurar.ValorMinimoKm.value = xValorMinimoKm;
 };
 
 
