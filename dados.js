@@ -250,8 +250,7 @@ function AtualizaValorKm() {
 	xValorMinimoKm = ((xValorCombustivel/xMediaConsumo)*xConfigPercentualMinimoKm).toFixed(2);
 
         document.FormConfigurar.CustoKm.value = (xValorCombustivel/xMediaConsumo).toFixed(2);
-        document.FormConfigurar.DescontoKm.value = (xValorMaximoKm-xValorMinimoKm)/1000;
-alert((xValorMaximoKm-xValorMinimoKm)/1000);
+        document.FormConfigurar.DescontoKm.value = ((xValorMaximoKm-xValorMinimoKm)/1000).toFixed(5);
         document.FormConfigurar.ValorMaximoKm.value = xValorMaximoKm;
         document.FormConfigurar.ValorMinimoKm.value = xValorMinimoKm;
 };
