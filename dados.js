@@ -138,7 +138,7 @@ function CalculaViagem() {
     xCustoCombustivel = Number(xCustoCombustivel);
 
     // Frete Liquido
-    xFreteLiquido = (xValorKmCobrado*xDistancia)-((xValorKmCobrado*xDistancia)*(xPorcentagemDesconto/100))-xAjuste+xOutros;
+    xFreteLiquido = (xValorKmCobrado*xDistancia)-((xValorKmCobrado*xDistancia)*(xPorcentagemDesconto/100))+xPedagio-xAjuste+xOutros;
     xFreteLiquido = String(xFreteLiquido.toFixed(2));
     xFreteLiquido = Number(xFreteLiquido);
  
@@ -200,7 +200,7 @@ function CalculaViagem() {
         "```Origem.:``` _*"+document.FormApp.Origem.value+"*_ \n" +
         "```Destino:``` _*"+document.FormApp.Destino.value+"*_ \n" +
         "\n" +
-        "```Frete....: +R$``` "+Number(xFreteTotal+xPedagio).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
+        "```Frete....: +R$``` "+Number(xFreteTotal).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "```Desconto.: -R$``` "+xDescontoFreteLiquido.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" ("+xDescontoTotal.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:1})+ "%)\n" +
         "```Ajudante.: +R$``` "+xAjudante.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "\n" +
