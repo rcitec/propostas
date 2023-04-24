@@ -148,7 +148,7 @@ function CalculaViagem() {
     xFreteTotal = Number(xFreteTotal);
 
     // Desconto Frete Liquido
-    xDescontoFreteLiquido = xFreteTotal-xFreteLiquido;
+    xDescontoFreteLiquido = xFreteTotal-xFreteLiquido-xPedagio-xOutros;
     xDescontoFreteLiquido = String(xDescontoFreteLiquido.toFixed(2));
     xDescontoFreteLiquido = Number(xDescontoFreteLiquido);
 
