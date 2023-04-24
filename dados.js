@@ -168,7 +168,7 @@ function CalculaViagem() {
     xTotalDosServicos = Number(xTotalDosServicos);
 
     // Receita Liquida
-    xReceitaLiquida = xTotalDosServicos-xAjuste-xCustoTotal+xOutros;
+    xReceitaLiquida = xTotalDosServicos-xAjuste-xCustoTotal;
     xReceitaLiquida = String(xReceitaLiquida.toFixed(2));
     xReceitaLiquida = Number(xReceitaLiquida);
 
