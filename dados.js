@@ -138,12 +138,12 @@ function CalculaViagem() {
     xCustoCombustivel = Number(xCustoCombustivel);
 
     // Frete Liquido
-    xFreteLiquido = (xValorKmCobrado*xDistancia)-((xValorKmCobrado*xDistancia)*(xPorcentagemDesconto/100))+xPedagio-xAjuste+xOutros;
+    xFreteLiquido = (xValorKmCobrado*xDistancia)-((xValorKmCobrado*xDistancia)*(xPorcentagemDesconto/100))-xAjuste+xOutros;
     xFreteLiquido = String(xFreteLiquido.toFixed(2));
     xFreteLiquido = Number(xFreteLiquido);
  
     // Frete Total
-    xFreteTotal = (xValorMaximoKm*xDistancia)+xOutros;
+    xFreteTotal = (xValorMaximoKm*xDistancia)+xPedagio+xOutros;
     xFreteTotal = String(xFreteTotal.toFixed(2));
     xFreteTotal = Number(xFreteTotal);
 
