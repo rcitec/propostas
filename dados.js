@@ -200,7 +200,7 @@ function CalculaViagem() {
         "```Origem.:``` _*"+document.FormApp.Origem.value+"*_ \n" +
         "```Destino:``` _*"+document.FormApp.Destino.value+"*_ \n" +
         "\n" +
-        "```Frete....: +R$``` "+Number(xFreteTotal+xPedagio+xOutros).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
+        "```Frete....: +R$``` "+Number(xFreteTotal+xPedagio).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "```Desconto.: -R$``` "+xDescontoFreteLiquido.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" ("+xDescontoTotal.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:1})+ "%)\n" +
         "```Ajudante.: +R$``` "+xAjudante.toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "\n" +
