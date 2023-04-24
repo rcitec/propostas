@@ -143,7 +143,7 @@ function CalculaViagem() {
     xFreteLiquido = Number(xFreteLiquido);
  
     // Frete Total
-    xFreteTotal = xValorMaximoKm*xDistancia;
+    xFreteTotal = (xValorMaximoKm*xDistancia)+xOutros;
     xFreteTotal = String(xFreteTotal.toFixed(2));
     xFreteTotal = Number(xFreteTotal);
 
