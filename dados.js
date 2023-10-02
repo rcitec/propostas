@@ -424,6 +424,7 @@ function GravaNovaData() {
 
 // **************************** Opção Gravar / Alterar
 function GravaProposta() {
+alert("Ok");
     xAgora = new Date();
     var dia = xAgora.getDate();
     if (xAgora.getDate()<10){var dia = String(xAgora.getDate()).padStart(2, '0');} else{var dia = xAgora.getDate()};
