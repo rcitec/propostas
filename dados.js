@@ -424,11 +424,12 @@ function GravaNovaData() {
 
 // **************************** Opção Gravar / Alterar
 function GravaProposta() {
-alert("Ok");
     xAgora = new Date();
     var dia = xAgora.getDate();
+alert(dia);
     if (xAgora.getDate()<10){var dia = String(xAgora.getDate()).padStart(2, '0');} else{var dia = xAgora.getDate()};
     if (xAgora.getMonth()+1<10){var mes = String(xAgora.getMonth()+1).padStart(2, '0');} else{var mes = xAgora.getMonth()+1()};
+alert(mes);
     var ano = xAgora.getFullYear();
     if (xAgora.getHours()<10){var hora = String(xAgora.getHours()).padStart(2, '0');} else{var hora = xAgora.getHours()};
     if (xAgora.getMinutes()<10){var minuto = String(xAgora.getMinutes()).padStart(2, '0');} else{var minuto = xAgora.getMinutes()};
