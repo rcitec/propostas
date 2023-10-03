@@ -427,16 +427,13 @@ function GravaProposta() {
     xAgora = new Date();
     var dia = xAgora.getDate();
     if (xAgora.getDate()<10){var dia = String(xAgora.getDate()).padStart(2, '0');} else{var dia = xAgora.getDate()};
-alert(dia)
     if (xAgora.getMonth()+1<10){var mes = String(xAgora.getMonth()+1).padStart(2, '0');} else{var mes = xAgora.getMonth()+1};
-alert(mes);
     var ano = xAgora.getFullYear();
     if (xAgora.getHours()<10){var hora = String(xAgora.getHours()).padStart(2, '0');} else{var hora = xAgora.getHours()};
     if (xAgora.getMinutes()<10){var minuto = String(xAgora.getMinutes()).padStart(2, '0');} else{var minuto = xAgora.getMinutes()};
     xAgora = dia+"/"+mes+"/"+ano+" "+hora+":"+minuto;
     xAgoraInvertida = ano+mes+dia+hora+minuto;
-alert(xAgora);
-
+    
     xOrigem = document.FormApp.Origem.value;
     xDestino = document.FormApp.Destino.value;
     xNome = document.FormApp.Nome.value;
@@ -444,11 +441,11 @@ alert(xAgora);
     xEmail = document.FormApp.Email.checked;
     xDistancia = Number(document.FormApp.Distancia.value);
     xPedagio = Number(document.FormApp.Pedagio.value);
-	xAjudante = Number(document.FormApp.Ajudante.value);
-	xOutros = Number(document.FormApp.Outros.value);
+    xAjudante = Number(document.FormApp.Ajudante.value);
+    xOutros = Number(document.FormApp.Outros.value);
     xPorcentagemDesconto = Number(document.FormApp.PorcentagemDesconto.value);
-	xAjuste = Number(document.FormApp.Ajuste.value);
-	xMediaConsumo = Number(document.FormConfigurar.ConfigMediaConsumo.value);
+    xAjuste = Number(document.FormApp.Ajuste.value);
+    xMediaConsumo = Number(document.FormConfigurar.ConfigMediaConsumo.value);
     xPercentualMaximoKm = Number(document.FormConfigurar.ConfigPercentualMaximoKm.value);
     xPercentualMinimoKm = Number(document.FormConfigurar.ConfigPercentualMinimoKm.value);
     xValorCombustivel = Number(document.FormApp.ValorCombustivel.value);
