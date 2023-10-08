@@ -1002,7 +1002,6 @@ function ApagaBancoDeDados() {
             localDB.transaction(function(tx) {tx.executeSql('DROP TABLE User;');});
             localDB.transaction(function(tx) {tx.executeSql('DROP TABLE Veiculos;');});
             localDB.transaction(function(tx) {tx.executeSql('DROP TABLE Propostas;');});
-        localDB.transaction(function(tx) {tx.executeSql('DROP TABLE Combustivel;');});
 
             xTituloMsgAlerta = "Ok";
             xMensagemAlerta = "Banco de Dados Apagado";
