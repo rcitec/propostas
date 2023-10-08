@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html lang="pt-br">
     <head>
         <title>RCI-Tec .::Login::.</title>
@@ -23,15 +24,17 @@
                         localDB.transaction(function(tx) {tx.executeSql('INSERT OR IGNORE INTO User(Id) VALUES(1);');});
                         localDB.transaction(function(tx) {tx.executeSql('UPDATE User SET Auth="'+xAuth+'" WHERE Id=1');});
 
+                        localDB.transaction(function(tx) {tx.executeSql('INSERT OR IGNORE INTO Veiculos(Id) VALUES(1);');});
+
                         setTimeout(function(){
                         query = "SELECT * FROM Veiculos;";
                         localDB.transaction(function(transaction){
                             transaction.executeSql(query, [], function(transaction, results){
                                 var row = results.rows.item(0);
 
-                                if (row['ValorCombustivel'] < .1){
+                                if (row['Veiculo'] == null){
                                     localDB.transaction(function(tx){tx.executeSql('UPDATE Veiculos SET Veiculo="Iveco", ValorCombustivel=9.99, MediaConsumo=8, PercentualMaximoKm=3.5, PercentualMinimoKm=2.3;');});
-                                    localDB.transaction(function(tx){tx.executeSql('UPDATE Veiculos SET Veiculo="Strada", ValorCombustivel=9.99, MediaConsumo=12, PercentualMaximoKm=3.5, PercentualMinimoKm=2.3;');});
+                                    localDB.transaction(function(tx) {tx.executeSql('INSERT INTO Veiculos (Veiculo, ValorCombustivel, MediaConsumo, PercentualMaximoKm, PercentualMinimoKm) VALUES ("Strada", 9.99, 12, 4, 2.5);');});
                                 };
 
                             }, function(transaction, error){return;})
@@ -40,7 +43,7 @@
                         },250);
                     }
                     else {alert('Senha Incorreta')}}
-                    else {alert('UsuÃ¡rio nÃ£o Encontrado')};
+                    else {alert('Usuário não Encontrado')};
             };
         </script>
     </head>
