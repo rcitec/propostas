@@ -432,7 +432,7 @@ function GravaProposta() {
     if (xAgora.getHours()<10){var hora = String(xAgora.getHours()).padStart(2, '0');} else{var hora = xAgora.getHours()};
     if (xAgora.getMinutes()<10){var minuto = String(xAgora.getMinutes()).padStart(2, '0');} else{var minuto = xAgora.getMinutes()};
     xAgora = dia+"/"+mes+"/"+ano+" "+hora+":"+minuto;
-    xAgoraInvertida = ano+mes+dia+hora+minuto;
+    xAgoraInvertida = ano+""+mes+""+dia+""+hora+""+minuto;
     
     xOrigem = document.FormApp.Origem.value;
     xDestino = document.FormApp.Destino.value;
