@@ -299,12 +299,12 @@ function BuscaProposta() {
 
 			var tabela = "<hr>" +
             	"<table class='TabelasApp' cellpadding='0px' width='100%'>" +
-		"<tr>" +                        
+		    "<tr>" +                        
                         "<td colspan='2' align='center'>" +
                             "<input type='button' value='  Voltar  ' onclick='FecharBusca()'/>        " +
                             "<input type='button' value=' Limpar Marcações eMail ' onclick='LimpaStatusEmail()'/>        " +
                             "<input type='button' value='  Filtrar  ' onclick='FiltrarBusca()'/>" +
-                            "<br>" +
+                            "<hr><br>" +
                         "</td>" +
                     "</tr>" ;
             	for (var i = 0; i < results.rows.length; i++) {
