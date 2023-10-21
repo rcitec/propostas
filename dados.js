@@ -297,8 +297,9 @@ function BuscaProposta() {
 	localDB.transaction(function(transaction){
 			transaction.executeSql(query, [], function(transaction, results){
 
-			var tabela = "<hr>" +
+			var tabela = "" +
             	"<table class='TabelasApp' cellpadding='0px' width='100%'>" +
+		    "<tr height='30px'><td colspan='2'><hr></td></tr>" +
 		    "<tr>" +                        
                         "<td colspan='2' align='center'>" +
                             "<input type='button' value='  Voltar  ' onclick='FecharBusca()'/>        " +
@@ -306,7 +307,8 @@ function BuscaProposta() {
                             "<input type='button' value='  Filtrar  ' onclick='FiltrarBusca()'/>" +
                             "<tr height='30px'><td colspan='2'><hr></td></tr>" +
                         "</td>" +
-                    "</tr>" ;
+                    "</tr>" +
+		    "<tr height='30px'><td colspan='2'><hr></td></tr>" ;
             	for (var i = 0; i < results.rows.length; i++) {
             		var row = results.rows.item(i);
 
