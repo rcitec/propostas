@@ -304,7 +304,7 @@ function BuscaProposta() {
                             "<input type='button' value='  Voltar  ' onclick='FecharBusca()'/>        " +
                             "<input type='button' value=' Limpar Marcações eMail ' onclick='LimpaStatusEmail()'/>        " +
                             "<input type='button' value='  Filtrar  ' onclick='FiltrarBusca()'/>" +
-                            "<hr><br>" +
+                            "<tr height='30px'><td colspan='2'><hr></td></tr>" +
                         "</td>" +
                     "</tr>" ;
             	for (var i = 0; i < results.rows.length; i++) {
