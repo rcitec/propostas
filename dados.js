@@ -1272,17 +1272,17 @@ function ConverteDados() {
         for (let i=1; i<xLinha2; i++) {
             localDB.transaction(function(tx) {tx.executeSql('INSERT INTO Veiculos (Veiculo, ValorCombustivel, MediaConsumo, PercentualMaximoKm, PercentualMinimoKm) VALUES ("'+window['xVeiculo1'+i]+'", '+window['xValorCombustivel'+i]+', '+window['xMediaConsumo1'+i]+', '+window['xPercentualMaximoKm1'+i]+', '+window['xPercentualMinimoKm1'+i]+');');});
         };
-    },1000);
+    },1500);
 
     setTimeout(function(){
         for (let i=1; i<xLinha3; i++) {
             localDB.transaction(function(tx) {tx.executeSql('INSERT INTO Propostas (Origem, Destino, Nome, Telefone, IdVeiculo, Veiculo, ValorLitroCombustivel, Distancia, Pedagio, Ajudante, Outros, PorcentagemDesconto, Ajuste, MediaConsumo, PercentualMaximoKm, PercentualMinimoKm, DescontoFreteLiquido, TotalDosServicos, DataRegistro, Busca, Email) VALUES ("'+window['xOrigem'+i]+'", "'+window['xDestino'+i]+'", "'+window['xNome'+i]+'", "'+window['xTelefone'+i]+'", '+window['xIdVeiculo'+i]+', "'+window['xVeiculo2'+i]+'", '+window['xValorLitroCombustivel'+i]+', '+window['xDistancia'+i]+', '+window['xPedagio'+i]+', '+window['xAjudante'+i]+', '+window['xOutros'+i]+', '+window['xPorcentagemDesconto'+i]+', '+window['xAjuste'+i]+', '+window['xMediaConsumo2'+i]+', '+window['xPercentualMaximoKm2'+i]+', '+window['xPercentualMinimoKm2'+i]+', '+window['xDescontoFreteLiquido'+i]+', '+window['xTotalDosServicos'+i]+',"'+window['xDataRegistro'+i]+'", "'+window['xBusca'+i]+'", "'+window['xEmail'+i]+'");');});
         };
-    },2000);
+    },3000);
 
     xTituloMsgAlerta = "Ok";
     xMensagemAlerta = (xLinha3-1)+" Registros Gravados";
     Alerta();
 
-    setTimeout(function(){location='index.html';},4000);
+    setTimeout(function(){location='index.html';},5000);
 };
