@@ -247,7 +247,7 @@ function FormataInputs() {
 
 // **************************** Formata Código de Barras
 function FormataCodigoBarras() {
-    var input = document.getElementById('barcode');
+    var input = document.getElementById('CodigoDeBarras');
     var value = input.value;
 
     // Remove todos os caracteres que não são dígitos
@@ -260,6 +260,10 @@ function FormataCodigoBarras() {
             formattedValue += ' ';
         }
         formattedValue += value[i];
+    }
+
+    // Define o valor formatado no campo de entrada
+    input.value = formattedValue;
 };
 
 
