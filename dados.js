@@ -245,6 +245,23 @@ function FormataInputs() {
 };
 
 
+// **************************** Formata Código de Barras
+function FormataCodigoBarras() {
+    var input = document.getElementById('barcode');
+    var value = input.value;
+
+    // Remove todos os caracteres que não são dígitos
+    value = value.replace(/\D/g, '');
+
+    // Formata o valor com espaços a cada 4 caracteres
+    var formattedValue = '';
+    for (var i = 0; i < value.length; i++) {
+        if (i > 0 && i % 4 == 0) {
+            formattedValue += ' ';
+        }
+        formattedValue += value[i];
+};
+
 
 // **************************** Atualiza Combustivel
 function AtualizaCombustivel() {
