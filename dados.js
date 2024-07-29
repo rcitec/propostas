@@ -219,7 +219,7 @@ function CalculaViagem() {
         "```Ajudante.: +R$``` "+Number(xAjudante).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" \n" +
         "```Desconto.: -R$``` "+Number(xDescontoFreteLiquido).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:2})+" ("+Number(xPercDescontoTotal).toLocaleString('pt-BR',{style: 'decimal', minimumFractionDigits:1})+ "%)\n" +
         "\n" +
-        "*Total dos Serviços R$ "+Number(xTotalDosServicos).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2})+"*";
+        "*Total dos Serviços R$* "+Number(xTotalDosServicos).toLocaleString('pt-BR', {style: 'decimal', minimumFractionDigits:2});
     document.FormApp.Proposta.value = xProposta;
 
     if (xValorKm < xValorMinimoKm-.005 && xMostrar == "Sim") {
