@@ -932,7 +932,7 @@ function GerarMail() {
                 + "<tr><td colspan='4' style='border-top:1px solid #D3D3D3;'></td></tr>"
                 + "<tr><td colspan='4' style='height:23px; padding-top: 5px;'> Pagador: <b>" + document.FormCriarMail.Pagador.value + "</b></td></tr>"
                 + "<tr><td colspan='4' style='height:23px;'> Vencimento: <b>" + document.FormCriarMail.Vencimento.value + "</b></td></tr>"
-                + "<tr><td colspan='4' style='height:23px; padding-bottom:8px;'> Código de Barras: <font size=1pt><b>" + document.FormCriarMail.CodigoDeBarras.value + "</b></font></td></tr>"
+                + "<tr><td colspan='4' style='height:23px; padding-bottom:8px;'> Código de Barras: <font size=2pt><b>" + document.FormCriarMail.CodigoDeBarras.value + "</b></font></td></tr>"
                 + "<tr><td colspan='4' style='border-top: 1px solid #D3D3D3;'></td></tr>"
                 + "<tr><td colspan='4' style='height:15px;'></td></tr>"
                 + "<tr><td colspan='4' style='height:30px;'> Atenciosamente,</td></tr>"
